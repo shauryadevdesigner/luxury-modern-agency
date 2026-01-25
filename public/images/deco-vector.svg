@@ -1,0 +1,18 @@
+<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <filter id="blur">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2"/>
+    </filter>
+  </defs>
+  
+  <!-- Curved wavy shapes for premium decoration -->
+  <path d="M 0,50 Q 50,20 100,50 T 200,50 T 300,50 T 400,50 L 400,0 L 0,0 Z" fill="#e0e7ff" opacity="0.6" filter="url(#blur)"/>
+  
+  <path d="M 0,150 Q 60,100 120,150 T 240,150 T 360,150 T 400,150 L 400,100 Q 350,130 300,100 T 150,130 T 0,100 Z" fill="#f3e8ff" opacity="0.5" filter="url(#blur)"/>
+  
+  <path d="M 0,300 Q 70,250 140,300 T 280,300 T 400,300 L 400,250 Q 350,280 280,250 T 140,280 T 0,250 Z" fill="#e0e7ff" opacity="0.4" filter="url(#blur)"/>
+  
+  <path d="M 0,450 Q 80,400 160,450 T 320,450 T 400,450 L 400,380 Q 350,420 280,380 T 140,420 T 0,380 Z" fill="#f3e8ff" opacity="0.35" filter="url(#blur)"/>
+  
+  <path d="M 0,600 Q 90,550 180,600 T 360,600 T 400,600 L 400,550 Q 360,580 300,550 T 150,580 T 0,550 Z" fill="#e0e7ff" opacity="0.3" filter="url(#blur)"/>
+</svg>
