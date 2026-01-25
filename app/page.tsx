@@ -25,8 +25,8 @@ export default function Home() {
     <main className="min-h-screen bg-background">
       <Navigation />
       <Hero />
-      <WhatWeDo />
       <TechStackCarousel />
+      <WhatWeDo />
       <Problems />
       <BeforeAfter />
       <ProofRow />

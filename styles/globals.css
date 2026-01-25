@@ -123,3 +123,22 @@
     @apply bg-background text-foreground;
   }
 }
+@layer utilities {
+  @keyframes marquee-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @keyframes marquee-right {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+  }
+
+  .animate-marquee-left {
+    animation: marquee-left var(--duration, 30s) linear infinite;
+  }
+
+  .animate-marquee-right {
+    animation: marquee-right var(--duration, 30s) linear infinite;
+  }
+}
