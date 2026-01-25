@@ -26,12 +26,12 @@ export default function Home() {
       <Navigation />
       <Hero />
       <TechStackCarousel />
-      <WhatWeDo />
+      <ProofRow />
+      <WhyUs />
       <Problems />
       <BeforeAfter />
-      <ProofRow />
+      <WhatWeDo />
       <Services />
-      <WhyUs />
       <Process />
       <SpeedPromise />
       <Showcase />
