@@ -25,12 +25,12 @@ export default function Home() {
     <main className="min-h-screen bg-background">
       <Navigation />
       <Hero />
-      <TechStackCarousel />
+      <WhatWeDo />
       <ProofRow />
       <WhyUs />
       <Problems />
       <BeforeAfter />
-      <WhatWeDo />
+      <TechStackCarousel />
       <Services />
       <Process />
       <SpeedPromise />
