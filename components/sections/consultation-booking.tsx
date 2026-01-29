@@ -24,14 +24,14 @@ export default function ConsultationBooking() {
   ]
 
   return (
-    <section className="py-16 md:py-20 px-4 md:px-8 bg-black text-white">
+    <section className="py-16 md:py-20 px-4 md:px-8 bg-background text-foreground border-t border-border">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10 slide-up">
-          <h2 className="mb-4">
-            Schedule a <span className="text-blue-400">Free Consultation</span>
+          <h2 className="mb-4 text-3xl md:text-5xl font-black">
+            Schedule a <span className="text-primary italic">Free Consultation</span>
           </h2>
-          <p className="text-yellow-400 text-lg md:text-xl max-w-3xl mx-auto">
+          <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto font-medium">
             Choose a time that works best for you. We'll discuss your project, answer your questions, and explore how we
             can help your business grow.
           </p>
@@ -44,13 +44,13 @@ export default function ConsultationBooking() {
             return (
               <div
                 key={index}
-                className="border border-gray-700 rounded-lg p-6 hover:border-blue-400 transition-all duration-300 hover:bg-gray-900/50 group"
+                className="border border-border rounded-xl p-6 hover:border-primary transition-all duration-300 hover:bg-muted/50 group"
               >
                 <div className="mb-4 inline-block">
-                  <Icon className="w-6 h-6 text-blue-400 group-hover:scale-110 transition-transform" />
+                  <Icon className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
                 </div>
-                <h3 className="text-white font-semibold mb-2">{feature.title}</h3>
-                <p className="text-gray-400 text-sm">{feature.description}</p>
+                <h3 className="font-bold mb-2">{feature.title}</h3>
+                <p className="text-muted-foreground text-sm">{feature.description}</p>
               </div>
             )
           })}
@@ -58,7 +58,7 @@ export default function ConsultationBooking() {
 
         {/* Calendly Embed */}
         <div className="flex justify-center animation-delay-200">
-          <div className="w-full max-w-2xl overflow-hidden">
+          <div className="w-full max-w-2xl overflow-hidden border border-border rounded-2xl shadow-2xl">
             <style>{`
               .calendly-wrapper::-webkit-scrollbar {
                 display: none;
@@ -69,15 +69,16 @@ export default function ConsultationBooking() {
               }
             `}</style>
             <div
-              className="calendly-wrapper rounded-lg"
+              className="calendly-wrapper"
               style={{
                 overflow: "hidden",
                 height: "750px",
                 width: "100%",
+                background: "white"
               }}
             >
               <iframe
-                src={`${CALENDLY_URL}?hide_event_type_details=1&hide_gdpr_block=1&background_color=000000`}
+                src={`${CALENDLY_URL}?hide_event_type_details=1&hide_gdpr_block=1&background_color=ffffff`}
                 width="100%"
                 height="800"
                 frameBorder="0"
@@ -85,7 +86,6 @@ export default function ConsultationBooking() {
                 style={{
                   overflow: "hidden",
                   border: "none",
-                  borderRadius: "0.5rem",
                 }}
                 scrolling="no"
               />

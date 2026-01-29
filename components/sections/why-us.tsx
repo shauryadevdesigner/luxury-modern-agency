@@ -8,25 +8,25 @@ const features = [
     icon: Zap,
     title: "Speed first",
     description: "We move in days, not weeks.",
-    color: "from-yellow-400 to-orange-500",
+    color: "from-slate-400 to-slate-600",
   },
   {
     icon: Shield,
     title: "Full ownership",
     description: "You own the code, infra and IP.",
-    color: "from-blue-400 to-indigo-500",
+    color: "from-slate-700 to-black",
   },
   {
     icon: Users,
     title: "Senior team only",
     description: "No juniors, no outsourcing chaos.",
-    color: "from-green-400 to-emerald-500",
+    color: "from-slate-500 to-slate-700",
   },
   {
     icon: Handshake,
     title: "Long-term partner",
     description: "We build, maintain and scale with you.",
-    color: "from-purple-400 to-pink-500",
+    color: "from-slate-600 to-slate-800",
   },
 ]
 
@@ -64,7 +64,7 @@ export default function WhyUs() {
             WHY US ? <span className="text-muted-foreground/30 mx-2">VS</span> OTHER AGENCIES
           </h2>
           <p className={`text-muted-foreground font-medium transition-all duration-1000 delay-100 ${isVisible ? "opacity-100" : "opacity-0"}`}>
-            With this type of Design
+            Experience the Qlyra difference
           </p>
         </div>
 
@@ -74,7 +74,7 @@ export default function WhyUs() {
             why us ?
           </span>
           <h3 className="text-4xl md:text-5xl font-black text-foreground">
-            4 pillars <span className="text-muted-foreground font-light text-3xl ml-2">( bloc)</span>
+            4 pillars <span className="text-muted-foreground font-light text-3xl ml-2">( block)</span>
           </h3>
         </div>
 

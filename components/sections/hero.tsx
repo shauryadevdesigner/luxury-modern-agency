@@ -4,19 +4,21 @@ import { useEffect, useRef, useState } from "react"
 import { ArrowRight } from "lucide-react"
 import { useContactForm } from "@/app/providers"
 import Image from "next/image"
+import { useLanguage } from "@/components/language-provider"
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false)
   const containerRef = useRef(null)
   const [isInView, setIsInView] = useState(false)
   const { openContactForm } = useContactForm()
+  const { t } = useLanguage()
   const [displayedText, setDisplayedText] = useState("")
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
 
   const CALENDLY_URL = "https://calendly.com/sosikomegrelidze95/new-meeting"
-  
-  const words = ["SaaS & apps", "web platforms", "mobile apps", "dashboards"]
+
+  const words = t.hero.words
 
   useEffect(() => {
     setIsLoaded(true)
@@ -67,60 +69,48 @@ export default function Hero() {
 
   return (
     <section className="relative pt-24 pb-16 md:pt-28 md:pb-20 overflow-hidden bg-background">
-      {/* Static UI Images - Left Side (touching the edge) */}
-      <div className="hidden xl:block absolute left-0 top-20 w-[22%] pointer-events-none z-0">
-        {/* Top Left Image */}
-        <div className="w-44 2xl:w-56 mb-4">
+      {/* Static UI Images - Left Side */}
+      <div className="hidden xl:block absolute left-0 top-32 w-[22%] pointer-events-none z-0 space-y-8">
+        <div className="w-full max-w-xs transform -translate-x-12 rotate-3 hover:rotate-0 transition-transform duration-700">
           <Image
-            src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/6658508666a051ca3d4d43d9_Side%20Left%20Top.png"
+            src="/side-left.png"
             alt="Dashboard UI mockup"
-            width={280}
-            height={200}
-            className="w-full h-auto"
-            unoptimized
+            width={500}
+            height={400}
+            className="w-full h-auto rounded-2xl shadow-2xl border border-border/50"
             priority
           />
         </div>
-
-        {/* Bottom Left Image */}
-        <div className="w-52 2xl:w-64">
+        <div className="w-full max-w-xs transform -translate-x-8 -rotate-6 hover:rotate-0 transition-transform duration-700 delay-100">
           <Image
-            src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/665850868778ce771abedb52_Side%20Left%20Bottom.png"
-            alt="App interface mockup"
-            width={320}
-            height={250}
-            className="w-full h-auto"
-            unoptimized
-            priority
+            src="/slack.png"
+            alt="Slack UI mockup"
+            width={500}
+            height={400}
+            className="w-full h-auto rounded-2xl shadow-2xl border border-border/50"
           />
         </div>
       </div>
 
-      {/* Static UI Images - Right Side (touching the edge) */}
-      <div className="hidden xl:block absolute right-0 top-20 w-[22%] pointer-events-none z-0 flex flex-col items-end">
-        {/* Top Right Image */}
-        <div className="w-44 2xl:w-56 mb-4 ml-auto">
+      {/* Static UI Images - Right Side */}
+      <div className="hidden xl:block absolute right-0 top-32 w-[22%] pointer-events-none z-0 space-y-8">
+        <div className="w-full max-w-xs transform translate-x-12 -rotate-3 hover:rotate-0 transition-transform duration-700 ml-auto">
           <Image
-            src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/66585086c450ce5c246e65f2_Side%20Right%20Top.png"
+            src="/side-right.png"
             alt="Mobile app mockup"
-            width={280}
-            height={200}
-            className="w-full h-auto"
-            unoptimized
+            width={500}
+            height={400}
+            className="w-full h-auto rounded-2xl shadow-2xl border border-border/50"
             priority
           />
         </div>
-
-        {/* Bottom Right Image */}
-        <div className="w-52 2xl:w-64 ml-auto">
+        <div className="w-full max-w-xs transform translate-x-8 rotate-6 hover:rotate-0 transition-transform duration-700 delay-100 ml-auto">
           <Image
-            src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/6658508760ca60d26516e00d_Side%20Right%20Bottom.png"
-            alt="Dashboard analytics mockup"
-            width={320}
-            height={250}
-            className="w-full h-auto"
-            unoptimized
-            priority
+            src="/figma.png"
+            alt="Figma UI mockup"
+            width={500}
+            height={400}
+            className="w-full h-auto rounded-2xl shadow-2xl border border-border/50"
           />
         </div>
       </div>
@@ -129,39 +119,37 @@ export default function Hero() {
       <div className="absolute bottom-0 left-0 right-0 h-px bg-border z-10" />
 
       {/* Main Content - Centered */}
-      <div className="max-w-4xl mx-auto relative z-10 text-center" ref={containerRef}>
+      <div className="max-w-5xl mx-auto relative z-10 text-center px-4" ref={containerRef}>
         <div
           className={`transition-all duration-1000 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           {/* Main Headline with Typewriter */}
           <h1
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight mb-6 leading-tight transition-all duration-700"
+            className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight mb-8 leading-tight transition-all duration-700"
             style={{
               opacity: isInView ? 1 : 0,
               transform: isInView ? "translateY(0)" : "translateY(20px)",
             }}
           >
-            We design, build and scale
-            <br />
-            <span className="relative inline-block text-[#1F3C88]">
+            {t.hero.headline}{" "}
+            <span className="relative inline-block text-primary min-w-[200px] text-left">
               {displayedText}
               <span className="animate-pulse">|</span>
             </span>
             <br />
-            <span className="text-foreground">— fast.</span>
+            <span className="text-foreground">{t.hero.fast}</span>
           </h1>
 
           {/* Subtitle */}
           <p
-            className="text-base md:text-lg lg:text-xl text-foreground/60 max-w-2xl mx-auto mb-10 leading-relaxed font-light transition-all duration-700"
+            className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed font-medium transition-all duration-700"
             style={{
               opacity: isInView ? 1 : 0,
               transform: isInView ? "translateY(0)" : "translateY(20px)",
               transitionDelay: "0.1s",
             }}
           >
-            From idea to production-ready product in days, not months. We bring full ownership, senior expertise, and
-            relentless focus on speed.
+            {t.hero.subtitle}
           </p>
 
           {/* CTA Buttons - Centered */}
@@ -175,33 +163,17 @@ export default function Hero() {
           >
             <button
               onClick={openContactForm}
-              className="px-8 py-4 bg-black text-white rounded-full font-semibold text-sm transition-all duration-500 hover:scale-105 hover:shadow-lg active:scale-95 group flex items-center gap-2"
+              className="px-10 py-5 bg-primary text-primary-foreground rounded-full font-bold text-sm tracking-widest transition-all duration-500 hover:scale-105 hover:shadow-2xl active:scale-95 group flex items-center gap-3"
             >
-              Get Started
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+              {t.hero.getStarted}
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
             </button>
             <button
               onClick={() => window.open(CALENDLY_URL, "_blank")}
-              className="px-8 py-4 bg-transparent text-foreground border border-border rounded-full font-semibold text-sm transition-all duration-500 hover:scale-105 hover:shadow-lg active:scale-95 group flex items-center gap-2 hover:bg-muted"
+              className="px-10 py-5 bg-transparent text-foreground border-2 border-border rounded-full font-bold text-sm tracking-widest transition-all duration-500 hover:scale-105 hover:bg-muted active:scale-95 group flex items-center gap-3"
             >
-              Watch The Demo
+              {t.hero.watchDemo}
             </button>
-          </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div
-          className="flex justify-center mt-16 transition-all duration-700"
-          style={{
-            opacity: isInView ? 1 : 0,
-            transform: isInView ? "translateY(0)" : "translateY(20px)",
-            transitionDelay: "0.4s",
-          }}
-        >
-          <div className="flex flex-col items-center gap-2 animate-bounce">
-            <div className="w-7 h-11 border-2 border-foreground/30 rounded-full flex justify-center pt-2">
-              <div className="w-1.5 h-3 bg-foreground/30 rounded-full animate-pulse" />
-            </div>
           </div>
         </div>
       </div>

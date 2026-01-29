@@ -9,24 +9,22 @@ const geist = Geist({ subsets: ["latin"] })
 const geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Oracle Development Agency | SaaS & App Development",
+  title: "Qlyra | SaaS & App Development Agency",
   description:
     "From idea to production-ready product in days, not months. We design, build, and scale SaaS & apps with full ownership and senior expertise.",
   generator: "v0.app",
   icons: {
-    icon: [
-      {
-        url: "/favicon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/favicon.svg",
+    icon: "/favicon.jpg",
+    apple: "/favicon.jpg",
   },
   viewport: {
     width: "device-width",
     initialScale: 1,
   },
 }
+
+import { ThemeProvider } from "@/components/theme-provider"
+import { LanguageProvider } from "@/components/language-provider"
 
 export default function RootLayout({
   children,
@@ -36,7 +34,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geist.className} antialiased bg-background text-foreground`}>
-        <ClientLayout>{children}</ClientLayout>
+        <LanguageProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <ClientLayout>{children}</ClientLayout>
+          </ThemeProvider>
+        </LanguageProvider>
         <Analytics />
       </body>
     </html>
