@@ -3,8 +3,21 @@
 import { useEffect, useRef, useState } from "react"
 import { ArrowRight } from "lucide-react"
 import { useContactForm } from "@/app/providers"
-import Image from "next/image"
 import { useLanguage } from "@/components/language-provider"
+
+const logosLeft = [
+  { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+  { name: "Supabase", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" },
+  { name: "Tailwind", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" },
+  { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+]
+
+const logosRight = [
+  { name: "Figma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+  { name: "Framer", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg" },
+  { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+  { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+]
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -15,13 +28,21 @@ export default function Hero() {
   const [displayedText, setDisplayedText] = useState("")
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
-
-  const CALENDLY_URL = "https://calendly.com/sosikomegrelidze95/new-meeting"
+  const [scrollProgress, setScrollProgress] = useState(0)
 
   const words = t.hero.words
 
   useEffect(() => {
     setIsLoaded(true)
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY
+      const progress = Math.min(scrollY / 500, 1)
+      setScrollProgress(progress)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   // Typewriter effect
@@ -68,81 +89,69 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative pt-24 pb-16 md:pt-28 md:pb-20 overflow-hidden bg-background">
-      {/* Static UI Images - Left Side */}
-      <div className="hidden xl:block absolute left-0 top-32 w-[22%] pointer-events-none z-0 space-y-8">
-        <div className="w-full max-w-xs transform -translate-x-12 rotate-3 hover:rotate-0 transition-transform duration-700">
-          <Image
-            src="/side-left.png"
-            alt="Dashboard UI mockup"
-            width={500}
-            height={400}
-            className="w-full h-auto rounded-2xl shadow-2xl border border-border/50"
-            priority
-          />
-        </div>
-        <div className="w-full max-w-xs transform -translate-x-8 -rotate-6 hover:rotate-0 transition-transform duration-700 delay-100">
-          <Image
-            src="/slack.png"
-            alt="Slack UI mockup"
-            width={500}
-            height={400}
-            className="w-full h-auto rounded-2xl shadow-2xl border border-border/50"
-          />
-        </div>
+    <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden bg-background">
+      {/* Logos - Left Side */}
+      <div
+        className="hidden xl:flex absolute left-0 top-1/2 -translate-y-1/2 flex-col gap-12 pl-12 transition-all duration-300 ease-out z-0"
+        style={{
+          transform: `translateY(-50%) translateX(-${scrollProgress * 150}%)`,
+          opacity: 1 - scrollProgress,
+        }}
+      >
+        {logosLeft.map((logo, idx) => (
+          <div key={idx} className="flex items-center gap-4 group">
+            <div className="w-16 h-16 bg-muted/30 rounded-2xl border border-border/50 flex items-center justify-center p-3 hover:scale-110 transition-transform duration-500 shadow-xl backdrop-blur-sm">
+              <img src={logo.icon} alt={logo.name} className="w-full h-full object-contain" />
+            </div>
+          </div>
+        ))}
       </div>
 
-      {/* Static UI Images - Right Side */}
-      <div className="hidden xl:block absolute right-0 top-32 w-[22%] pointer-events-none z-0 space-y-8">
-        <div className="w-full max-w-xs transform translate-x-12 -rotate-3 hover:rotate-0 transition-transform duration-700 ml-auto">
-          <Image
-            src="/side-right.png"
-            alt="Mobile app mockup"
-            width={500}
-            height={400}
-            className="w-full h-auto rounded-2xl shadow-2xl border border-border/50"
-            priority
-          />
-        </div>
-        <div className="w-full max-w-xs transform translate-x-8 rotate-6 hover:rotate-0 transition-transform duration-700 delay-100 ml-auto">
-          <Image
-            src="/figma.png"
-            alt="Figma UI mockup"
-            width={500}
-            height={400}
-            className="w-full h-auto rounded-2xl shadow-2xl border border-border/50"
-          />
-        </div>
+      {/* Logos - Right Side */}
+      <div
+        className="hidden xl:flex absolute right-0 top-1/2 -translate-y-1/2 flex-col gap-12 pr-12 transition-all duration-300 ease-out z-0"
+        style={{
+          transform: `translateY(-50%) translateX(${scrollProgress * 150}%)`,
+          opacity: 1 - scrollProgress,
+        }}
+      >
+        {logosRight.map((logo, idx) => (
+          <div key={idx} className="flex items-center gap-4 justify-end group">
+            <div className="w-16 h-16 bg-muted/30 rounded-2xl border border-border/50 flex items-center justify-center p-3 hover:scale-110 transition-transform duration-500 shadow-xl backdrop-blur-sm">
+              <img src={logo.icon} alt={logo.name} className="w-full h-full object-contain" />
+            </div>
+          </div>
+        ))}
       </div>
 
-      {/* Horizontal line at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-border z-10" />
-
-      {/* Main Content - Centered */}
+      {/* Main Content */}
       <div className="max-w-5xl mx-auto relative z-10 text-center px-4" ref={containerRef}>
         <div
           className={`transition-all duration-1000 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          {/* Main Headline with Typewriter */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 mb-8">
+            <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></div>
+            <span className="text-[10px] font-black tracking-[0.2em] text-primary uppercase">Innovation First</span>
+          </div>
+
           <h1
-            className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight mb-8 leading-tight transition-all duration-700"
+            className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mb-8 leading-[1.1] transition-all duration-700"
             style={{
               opacity: isInView ? 1 : 0,
               transform: isInView ? "translateY(0)" : "translateY(20px)",
             }}
           >
             {t.hero.headline}{" "}
-            <span className="relative inline-block text-primary min-w-[200px] text-left">
+            <span className="relative inline-block text-primary min-w-[200px] text-left italic font-serif">
               {displayedText}
-              <span className="animate-pulse">|</span>
+              <span className="animate-pulse not-italic">|</span>
             </span>
             <br />
             <span className="text-foreground">{t.hero.fast}</span>
           </h1>
 
-          {/* Subtitle */}
           <p
-            className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed font-medium transition-all duration-700"
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed font-medium transition-all duration-700"
             style={{
               opacity: isInView ? 1 : 0,
               transform: isInView ? "translateY(0)" : "translateY(20px)",
@@ -152,9 +161,8 @@ export default function Hero() {
             {t.hero.subtitle}
           </p>
 
-          {/* CTA Buttons - Centered */}
           <div
-            className="flex flex-row gap-4 items-center justify-center flex-wrap transition-all duration-700"
+            className="flex flex-row gap-6 items-center justify-center flex-wrap transition-all duration-700"
             style={{
               opacity: isInView ? 1 : 0,
               transform: isInView ? "translateY(0)" : "translateY(20px)",
@@ -163,14 +171,14 @@ export default function Hero() {
           >
             <button
               onClick={openContactForm}
-              className="px-10 py-5 bg-primary text-primary-foreground rounded-full font-bold text-sm tracking-widest transition-all duration-500 hover:scale-105 hover:shadow-2xl active:scale-95 group flex items-center gap-3"
+              className="px-12 py-6 bg-primary text-primary-foreground rounded-full font-bold text-xs tracking-widest transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] active:scale-95 group flex items-center gap-3"
             >
               {t.hero.getStarted}
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
             </button>
             <button
-              onClick={() => window.open(CALENDLY_URL, "_blank")}
-              className="px-10 py-5 bg-transparent text-foreground border-2 border-border rounded-full font-bold text-sm tracking-widest transition-all duration-500 hover:scale-105 hover:bg-muted active:scale-95 group flex items-center gap-3"
+              onClick={() => window.open("https://calendly.com/sosikomegrelidze95/new-meeting", "_blank")}
+              className="px-12 py-6 bg-white dark:bg-black text-foreground border border-border rounded-full font-bold text-xs tracking-widest transition-all duration-500 hover:scale-105 hover:bg-muted active:scale-95 group"
             >
               {t.hero.watchDemo}
             </button>

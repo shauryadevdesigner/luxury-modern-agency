@@ -23,32 +23,32 @@ const row2 = [...techStack.slice(8)]
 
 export default function TechStackCarousel() {
   return (
-    <section className="py-16 bg-background overflow-hidden">
-      <div className="container mx-auto px-4 mb-10 text-center">
-        <p className="text-sm font-bold text-muted-foreground uppercase tracking-[0.2em]">
-          Technologies & Platforms We Master
+    <section className="py-12 bg-background overflow-hidden border-b border-border/50">
+      <div className="container mx-auto px-4 mb-8 text-center">
+        <p className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.4em] opacity-60">
+          TECHNOLOGIES & PLATFORMS WE MASTER
         </p>
       </div>
 
-      <div className="flex flex-col gap-8">
-        {/* Row 1: Left to Right */}
+      <div className="flex flex-col gap-6">
+        {/* Row 1: Right to Left (Wait, user said 1st line move right to left, 2nd left to right) */}
         <div className="relative w-full overflow-hidden">
           <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
-          <div className="flex w-max animate-marquee-right" style={{ "--duration": "40s" } as any}>
+          <div className="flex w-max animate-marquee-left" style={{ "--duration": "40s" } as any}>
             {[...row1, ...row1, ...row1, ...row1].map((tech, index) => (
               <TechIcon key={index} tech={tech} />
             ))}
           </div>
         </div>
 
-        {/* Row 2: Right to Left */}
+        {/* Row 2: Left to Right */}
         <div className="relative w-full overflow-hidden">
           <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
-          <div className="flex w-max animate-marquee-left" style={{ "--duration": "50s" } as any}>
+          <div className="flex w-max animate-marquee-right" style={{ "--duration": "50s" } as any}>
             {[...row2, ...row2, ...row2, ...row2].map((tech, index) => (
               <TechIcon key={index} tech={tech} />
             ))}
@@ -61,16 +61,15 @@ export default function TechStackCarousel() {
 
 function TechIcon({ tech }: { tech: typeof techStack[0] }) {
   return (
-    <div className="flex items-center gap-3 mx-4 px-6 py-3 bg-muted/30 rounded-full border border-border/50 hover:border-primary/40 hover:bg-muted/50 transition-all duration-300 group cursor-default">
+    <div className="flex items-center gap-3 mx-3 px-5 py-2.5 bg-muted/20 rounded-full border border-border/50 hover:border-primary/40 hover:bg-muted/40 transition-all duration-300 group cursor-default">
       <img
         src={tech.icon || "/placeholder.svg"}
         alt={tech.name}
-        className="w-6 h-6 object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
+        className="w-5 h-5 object-contain transition-all duration-500 group-hover:scale-110"
       />
-      <span className="text-base font-semibold text-muted-foreground group-hover:text-foreground transition-colors duration-300 whitespace-nowrap">
+      <span className="text-sm font-bold text-muted-foreground group-hover:text-foreground transition-colors duration-300 whitespace-nowrap">
         {tech.name}
       </span>
     </div>
   )
 }
-
