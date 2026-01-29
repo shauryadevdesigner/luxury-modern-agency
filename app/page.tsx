@@ -9,7 +9,7 @@ import Services from "@/components/sections/services"
 import WhyUs from "@/components/sections/why-us"
 import Process from "@/components/sections/process"
 import SpeedPromise from "@/components/sections/speed-promise"
-import Showcase from "@/components/sections/showcase"
+import Presentation from "@/components/sections/presentation"
 import CaseStudy from "@/components/sections/mobile-dev-case-study"
 import References from "@/components/sections/references"
 import Portfolio from "@/components/sections/portfolio"
@@ -34,7 +34,7 @@ export default function Home() {
       <Services />
       <Process />
       <SpeedPromise />
-      <Showcase />
+      <Presentation />
       <CaseStudy />
       <References />
       <Portfolio />
