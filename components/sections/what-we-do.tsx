@@ -2,52 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
-import { ArrowRight, Laptop, Smartphone, Globe, Palette, Server, BarChart3 } from "lucide-react"
-
-const features = [
-  {
-    title: "SaaS Development",
-    description: "End-to-end SaaS solutions built with scalability and performance in mind.",
-    image: "/side-left.png",
-    icon: <Laptop className="w-6 h-6" />,
-    color: "from-slate-700 to-slate-900",
-  },
-  {
-    title: "Mobile Apps (iOS / Android)",
-    description: "Native and cross-platform mobile experiences that users love.",
-    image: "/side-right.png",
-    icon: <Smartphone className="w-6 h-6" />,
-    color: "from-slate-600 to-slate-800",
-  },
-  {
-    title: "Web Platforms",
-    description: "Complex web applications and platforms designed for modern businesses.",
-    image: "/side-left.png",
-    icon: <Globe className="w-6 h-6" />,
-    color: "from-slate-700 to-slate-900",
-  },
-  {
-    title: "UI/UX Design",
-    description: "Beautiful, intuitive interfaces that enhance user engagement and conversion.",
-    image: "/side-right.png",
-    icon: <Palette className="w-6 h-6" />,
-    color: "from-slate-600 to-slate-800",
-  },
-  {
-    title: "Infrastructure & DevOps",
-    description: "Secure, reliable, and automated infrastructure to support your growth.",
-    image: "/side-left.png",
-    icon: <Server className="w-6 h-6" />,
-    color: "from-slate-700 to-slate-900",
-  },
-  {
-    title: "Maintenance & Scaling",
-    description: "Continuous support and optimization to keep your product at peak performance.",
-    image: "/side-right.png",
-    icon: <BarChart3 className="w-6 h-6" />,
-    color: "from-slate-600 to-slate-800",
-  },
-]
+import { Monitor, Smartphone, Globe, Layers, Zap, Shield } from "lucide-react"
 
 export default function WhatWeDo() {
   const [isInView, setIsInView] = useState(false)
@@ -71,76 +26,114 @@ export default function WhatWeDo() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 md:py-32 bg-background text-foreground overflow-hidden relative">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/3 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/3 pointer-events-none" />
-
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-3xl mb-16 md:mb-24">
-          <div
-            className={`inline-flex items-center gap-2 px-4 py-1.5 mb-6 text-xs font-bold tracking-[0.2em] text-foreground uppercase border border-border rounded-full bg-muted transition-all duration-1000 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-            </span>
-            WHAT WE DO
+    <section ref={sectionRef} className="py-20 md:py-24 bg-background text-foreground overflow-hidden">
+      <div className="container mx-auto px-6">
+        {/* Header - Sober & Minimal */}
+        <div className="mb-12 md:mb-16">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_10px_rgba(45,91,255,0.5)]"></div>
+            <span className="text-[10px] font-black tracking-[0.3em] uppercase opacity-40">Expertise & Services</span>
           </div>
-
-          <h2
-            className={`text-4xl md:text-6xl font-black mb-8 leading-tight transition-all duration-1000 delay-100 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-          >
-            Our Objective is to show <br className="hidden md:block" />
-            that we do <span className="italic font-light text-primary underline decoration-primary/30 underline-offset-8">EVERYTHING</span>
+          <h2 className={`text-4xl md:text-5xl font-black tracking-tighter mb-6 transition-all duration-1000 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+            We build the future of <br className="hidden md:block" /> digital products <span className="text-primary italic">at scale.</span>
           </h2>
-
-          <p
-            className={`text-muted-foreground text-lg md:text-xl max-w-2xl leading-relaxed transition-all duration-1000 delay-200 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-          >
-            We don&apos;t just build features; we build businesses. From the first line of code to global scale, we are your dedicated product partner.
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className={`group relative h-[450px] md:h-[500px] rounded-[2.5rem] overflow-hidden border border-border bg-muted/30 transition-all duration-700 hover:border-primary/30 hover:shadow-2xl transition-all duration-1000 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
-              style={{ transitionDelay: `${index * 100 + 300}ms` }}
-            >
-              <div className="absolute inset-0 z-0">
-                <Image
-                  src={feature.image}
-                  alt={feature.title}
-                  fill
-                  className="object-cover transition-all duration-1000 group-hover:scale-110 opacity-30 grayscale group-hover:grayscale-0"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-700" />
+        {/* Top Row: 3 Vertical Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-6">
+          <ServiceCard
+            title="SaaS Development"
+            icon={<Monitor className="w-4 h-4" />}
+            image="/side-left.png"
+            isInView={isInView}
+            delay={100}
+            color="bg-purple-500"
+          />
+          <ServiceCard
+            title="Mobile Apps"
+            icon={<Smartphone className="w-4 h-4" />}
+            image="/side-right.png"
+            isInView={isInView}
+            delay={200}
+            color="bg-blue-500"
+          />
+          <ServiceCard
+            title="Web Platforms"
+            icon={<Globe className="w-4 h-4" />}
+            image="/side-left.png"
+            isInView={isInView}
+            delay={300}
+            color="bg-emerald-500"
+          />
+        </div>
+
+        {/* Bottom Area: Different Structure */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
+          {/* Detailed Card 1 */}
+          <div className={`group relative h-[300px] rounded-[2rem] overflow-hidden border border-border bg-muted/20 transition-all duration-1000 delay-400 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+            <Image src="/side-left.png" alt="SaaS Mockup" fill className="object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent p-10 flex flex-col justify-end">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-white/10 backdrop-blur-md rounded-lg border border-white/10">
+                  <Layers className="w-4 h-4 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-white">Advanced Architecture</h3>
               </div>
+              <p className="text-white/60 text-sm max-w-sm">Production-ready systems designed for high-concurrency and global distribution.</p>
+            </div>
+          </div>
 
-              <div className="absolute inset-0 z-10 p-10 flex flex-col justify-end">
-                <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-6 transform transition-all duration-500 group-hover:scale-110 shadow-lg text-white`}>
-                  {feature.icon}
-                </div>
-
-                <h3 className="text-2xl md:text-3xl font-black mb-4 transform transition-all duration-500 group-hover:-translate-y-2">
-                  {feature.title}
-                </h3>
-
-                <div className="overflow-hidden">
-                  <p className="text-muted-foreground text-base md:text-lg leading-relaxed opacity-0 max-h-0 transform translate-y-8 transition-all duration-700 group-hover:opacity-100 group-hover:max-h-32 group-hover:translate-y-0">
-                    {feature.description}
-                  </p>
-                </div>
-
-                <div className="mt-8 flex items-center text-xs font-bold tracking-widest text-primary uppercase opacity-0 transform translate-y-4 transition-all duration-500 delay-100 group-hover:opacity-100 group-hover:translate-y-0 hover:text-primary/80 pointer-events-auto cursor-pointer">
-                  Explore Feature <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-2" />
-                </div>
+          {/* Grid within Grid */}
+          <div className="grid grid-cols-2 gap-4 md:gap-6">
+            <div className={`group relative h-[300px] rounded-[2rem] overflow-hidden border border-border bg-[#0A0A0A] p-8 flex flex-col justify-between transition-all duration-1000 delay-500 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+              <div className="flex items-center gap-2">
+                <span className="text-primary font-black text-xl">FusionHealth</span>
+                <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+              </div>
+              <div>
+                <h4 className="text-white font-bold mb-2">Design Systems</h4>
+                <p className="text-white/30 text-xs">Unified visual languages for consistency.</p>
               </div>
             </div>
-          ))}
+
+            <div className={`group relative h-[300px] rounded-[2rem] overflow-hidden border border-border bg-muted/20 transition-all duration-1000 delay-600 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+              <Image src="/side-right.png" alt="Watch Mockup" fill className="object-cover opacity-50 grayscale" />
+              <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                <Zap className="w-5 h-5 text-yellow-400 mb-2" />
+                <h4 className="text-white font-bold text-sm">IoT & Embedded</h4>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+  )
+}
+
+function ServiceCard({ title, icon, image, isInView, delay, color }: any) {
+  return (
+    <div
+      className={`group relative h-[350px] md:h-[400px] rounded-[2.5rem] overflow-hidden border border-border bg-muted/20 transition-all duration-1000 cursor-pointer ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image src={image} alt={title} fill className="object-cover opacity-40 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+      </div>
+
+      {/* Content */}
+      <div className="absolute inset-0 z-10 p-10 flex flex-col justify-between">
+        <div className={`w-10 h-10 rounded-xl ${color} shadow-lg flex items-center justify-center text-white transform group-hover:rotate-12 transition-transform duration-500`}>
+          {icon}
+        </div>
+        <div>
+          <h3 className="text-2xl font-black mb-2 tracking-tight group-hover:text-primary transition-colors duration-300">
+            {title}
+          </h3>
+          <div className="w-8 h-1 bg-primary/20 group-hover:w-full transition-all duration-700"></div>
+        </div>
+      </div>
+    </div>
   )
 }
