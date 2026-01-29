@@ -31,24 +31,24 @@ export default function TechStackCarousel() {
       </div>
 
       <div className="flex flex-col gap-6">
-        {/* Row 1: Right to Left (Wait, user said 1st line move right to left, 2nd left to right) */}
+        {/* Row 1: Left to Right */}
         <div className="relative w-full overflow-hidden">
           <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
-          <div className="flex w-max animate-marquee-left" style={{ "--duration": "40s" } as any}>
+          <div className="flex w-max animate-marquee-right" style={{ "--duration": "40s" } as any}>
             {[...row1, ...row1, ...row1, ...row1].map((tech, index) => (
               <TechIcon key={index} tech={tech} />
             ))}
           </div>
         </div>
 
-        {/* Row 2: Left to Right */}
+        {/* Row 2: Right to Left */}
         <div className="relative w-full overflow-hidden">
           <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
-          <div className="flex w-max animate-marquee-right" style={{ "--duration": "50s" } as any}>
+          <div className="flex w-max animate-marquee-left" style={{ "--duration": "50s" } as any}>
             {[...row2, ...row2, ...row2, ...row2].map((tech, index) => (
               <TechIcon key={index} tech={tech} />
             ))}
@@ -61,7 +61,7 @@ export default function TechStackCarousel() {
 
 function TechIcon({ tech }: { tech: typeof techStack[0] }) {
   return (
-    <div className="flex items-center gap-3 mx-3 px-5 py-2.5 bg-muted/20 rounded-full border border-border/50 hover:border-primary/40 hover:bg-muted/40 transition-all duration-300 group cursor-default">
+    <div className="flex items-center gap-3 mx-3 px-5 py-2.5 bg-muted/20 rounded-full border border-border/50 hover:border-primary/40 hover:bg-muted/40 transition-all duration-300 group cursor-default shadow-sm">
       <img
         src={tech.icon || "/placeholder.svg"}
         alt={tech.name}
