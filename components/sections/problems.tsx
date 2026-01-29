@@ -1,37 +1,31 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import Image from "next/image"
+import { Database, Clock, BarChart3 } from "lucide-react"
+import { useContactForm } from "@/app/providers"
 
-const floatingAssets = [
-  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg", className: "top-[10%] left-[5%] w-16 h-16 rotate-[-15deg]" },
-  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg", className: "bottom-[20%] left-[10%] w-20 h-20 rotate-[10deg]" },
-  { src: "/logo.jpg", className: "top-[40%] left-[2%] w-14 h-14 rotate-[-5deg]" },
-  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", className: "top-[15%] right-[5%] w-24 h-24 rotate-[20deg]" },
-  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", className: "bottom-[15%] right-[10%] w-20 h-20 rotate-[-10deg]" },
-  { src: "/favicon.jpg", className: "bottom-[40%] right-[3%] w-16 h-16 rotate-[5deg]" },
-  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg", className: "top-[60%] left-[8%] w-12 h-12 rotate-[-12deg]" },
-  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", className: "top-[60%] right-[8%] w-12 h-12 rotate-[12deg]" },
+const problems = [
+  {
+    icon: Database,
+    title: "Data Everywhere",
+    description: "Your data, KPIs, and tasks are split across spreadsheets, chats, and dozens of apps, making it impossible to see the full picture."
+  },
+  {
+    icon: Clock,
+    title: "Trapped in Operations",
+    description: "Instead of focusing on growth, you're stuck micromanaging projects, chasing updates, and putting out fires."
+  },
+  {
+    icon: BarChart3,
+    title: "Guesswork over Growth",
+    description: "Without real-time visibility, decisions are based on gut feeling, and scaling becomes a gamble, not a system."
+  }
 ]
 
 export default function Problems() {
+  const { openContactForm } = useContactForm()
+  const sectionRef = useRef(null)
   const [isInView, setIsInView] = useState(false)
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const [scrollProgress, setScrollProgress] = useState(0)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (sectionRef.current) {
-        const rect = sectionRef.current.getBoundingClientRect()
-        const winHeight = window.innerHeight
-        const progress = Math.max(0, Math.min(1, (winHeight - rect.top) / (winHeight + rect.height)))
-        setScrollProgress(progress)
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -40,7 +34,7 @@ export default function Problems() {
           setIsInView(true)
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.2 }
     )
 
     if (sectionRef.current) {
@@ -51,58 +45,61 @@ export default function Problems() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-32 bg-white overflow-hidden border-b border-border/50">
-      {/* Scattered Floating Assets */}
-      {floatingAssets.map((asset, idx) => (
-        <div
-          key={idx}
-          className={`absolute pointer-events-none transition-all duration-1000 ease-out hidden md:block ${asset.className}`}
-          style={{
-            transform: `translateY(${(scrollProgress - 0.5) * 100 * (idx % 2 === 0 ? 1 : -1)}px) scale(${isInView ? 1 : 0.8})`,
-            opacity: isInView ? 1 : 0,
-            transitionDelay: `${idx * 50}ms`
-          }}
-        >
-          <div className="p-4 bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-border/10">
-            <img src={asset.src} alt="tool" className="w-full h-full object-contain" />
-          </div>
-        </div>
-      ))}
-
-      <div className="container mx-auto px-6 relative z-10 text-center">
-        {/* Pink Title */}
-        <p className="text-[#FF00FF] font-black text-sm tracking-[0.4em] uppercase mb-10 transition-all duration-700"
-          style={{ opacity: isInView ? 1 : 0, transform: isInView ? 'translateY(0)' : 'translateY(10px)' }}>
-          Problématique
-        </p>
-
-        {/* Headline */}
-        <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-12 max-w-4xl mx-auto leading-[1.1] text-slate-900 transition-all duration-1000 delay-100"
-          style={{ opacity: isInView ? 1 : 0, transform: isInView ? 'translateY(0)' : 'translateY(20px)' }}>
-          Build your first version<br />
-          is <span className="relative">
-            long, expensive, and a struggle...
-            <svg className="absolute -bottom-2 left-0 w-full h-4 text-[#FF00FF]/40" viewBox="0 0 100 10" preserveAspectRatio="none">
-              <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="transparent" strokeLinecap="round" />
-            </svg>
+    <section ref={sectionRef} className="py-12 md:py-16 px-6 md:px-12 lg:px-24 bg-background">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-10">
+          <span className="inline-block px-4 py-1.5 bg-muted rounded-full text-sm font-medium text-muted-foreground mb-6">
+            PROBLEMS
           </span>
-        </h2>
+          <h2 
+            className={`text-4xl md:text-5xl font-bold text-foreground mb-4 transition-all duration-700 ${
+              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            The chaos that's killing<br />your agency's growth
+          </h2>
+        </div>
 
-        {/* Testimonial Quote */}
-        <div className="max-w-2xl mx-auto mt-20 transition-all duration-1000 delay-300"
-          style={{ opacity: isInView ? 1 : 0, transform: isInView ? 'translateY(0)' : 'translateY(20px)' }}>
-          <p className="text-slate-400 text-lg md:text-xl font-medium italic mb-8 leading-relaxed">
-            "In general, it takes $70,000 and 18 months for our project holders to launch the first version of their app."
-          </p>
-          <div className="flex items-center justify-center gap-4">
-            <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#FF00FF]/20">
-              <Image src="/favicon.jpg" alt="Avatar" width={48} height={48} className="object-cover" />
+        {/* Problem Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {problems.map((problem, index) => (
+            <div
+              key={problem.title}
+              className={`p-8 bg-background border border-border rounded-2xl hover:border-primary/30 transition-all duration-500 ${
+                isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: `${index * 0.1}s` }}
+            >
+              <div className="w-12 h-12 bg-muted rounded-xl flex items-center justify-center mb-6">
+                <problem.icon className="w-6 h-6 text-foreground" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-3">
+                {problem.title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                {problem.description}
+              </p>
             </div>
-            <div className="text-left">
-              <p className="font-bold text-slate-900 leading-none">Alex Chen</p>
-              <p className="text-xs text-slate-400 font-bold tracking-widest uppercase mt-1">PM, Startup Manager</p>
-            </div>
-          </div>
+          ))}
+        </div>
+
+        {/* CTA Buttons */}
+        <div 
+          className={`flex flex-wrap justify-center gap-4 transition-all duration-700 ${
+            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+          style={{ transitionDelay: "0.4s" }}
+        >
+          <button 
+            onClick={openContactForm}
+            className="px-8 py-3 bg-foreground text-background rounded-full font-semibold text-sm hover:bg-foreground/90 transition-all duration-300"
+          >
+            Get Started
+          </button>
+          <button className="px-8 py-3 bg-background text-foreground border border-border rounded-full font-semibold text-sm hover:bg-muted transition-all duration-300">
+            Watch The Demo
+          </button>
         </div>
       </div>
     </section>

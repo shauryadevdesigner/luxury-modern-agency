@@ -6,12 +6,14 @@ import { useContactForm } from "@/app/providers"
 import { useLanguage } from "@/components/language-provider"
 
 const logosLeft = [
+  { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
   { name: "Supabase", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" },
   { name: "Tailwind", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" },
   { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
 ]
 
 const logosRight = [
+  { name: "Figma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
   { name: "Framer", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg" },
   { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
   { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
@@ -19,7 +21,7 @@ const logosRight = [
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false)
-  const containerRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef(null)
   const [isInView, setIsInView] = useState(false)
   const { openContactForm } = useContactForm()
   const { t } = useLanguage()
@@ -35,7 +37,7 @@ export default function Hero() {
 
     const handleScroll = () => {
       const scrollY = window.scrollY
-      const progress = Math.min(scrollY / 600, 1)
+      const progress = Math.min(scrollY / 500, 1)
       setScrollProgress(progress)
     }
 
@@ -87,47 +89,37 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative pt-36 pb-24 md:pt-48 md:pb-36 overflow-hidden bg-background">
-      {/* Dynamic Background Logos - Left Side */}
+    <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden bg-background">
+      {/* Logos - Left Side */}
       <div
-        className="hidden lg:flex absolute left-8 top-1/2 -translate-y-1/2 flex-col gap-20 transition-all duration-300 ease-out z-0"
+        className="hidden xl:flex absolute left-0 top-1/2 -translate-y-1/2 flex-col gap-12 pl-12 transition-all duration-300 ease-out z-0"
         style={{
-          transform: `translateY(-50%) translateX(-${scrollProgress * 200}px)`,
+          transform: `translateY(-50%) translateX(-${scrollProgress * 150}%)`,
           opacity: 1 - scrollProgress,
         }}
       >
         {logosLeft.map((logo, idx) => (
-          <div
-            key={idx}
-            className="w-20 h-20 bg-background rounded-3xl border border-border/50 flex items-center justify-center p-4 shadow-2xl transition-transform duration-500 hover:scale-110 hover:-rotate-6 cursor-default group"
-            style={{
-              transitionDelay: `${idx * 100}ms`,
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.1)'
-            }}
-          >
-            <img src={logo.icon} alt={logo.name} className="w-full h-full object-contain filter group-hover:drop-shadow-lg" />
+          <div key={idx} className="flex items-center gap-4 group">
+            <div className="w-16 h-16 bg-muted/30 rounded-2xl border border-border/50 flex items-center justify-center p-3 hover:scale-110 transition-transform duration-500 shadow-xl backdrop-blur-sm">
+              <img src={logo.icon} alt={logo.name} className="w-full h-full object-contain" />
+            </div>
           </div>
         ))}
       </div>
 
-      {/* Dynamic Background Logos - Right Side */}
+      {/* Logos - Right Side */}
       <div
-        className="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 flex-col gap-20 transition-all duration-300 ease-out z-0"
+        className="hidden xl:flex absolute right-0 top-1/2 -translate-y-1/2 flex-col gap-12 pr-12 transition-all duration-300 ease-out z-0"
         style={{
-          transform: `translateY(-50%) translateX(${scrollProgress * 200}px)`,
+          transform: `translateY(-50%) translateX(${scrollProgress * 150}%)`,
           opacity: 1 - scrollProgress,
         }}
       >
         {logosRight.map((logo, idx) => (
-          <div
-            key={idx}
-            className="w-20 h-20 bg-background rounded-3xl border border-border/50 flex items-center justify-center p-4 shadow-2xl transition-transform duration-500 hover:scale-110 hover:rotate-6 cursor-default group"
-            style={{
-              transitionDelay: `${idx * 100}ms`,
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.1)'
-            }}
-          >
-            <img src={logo.icon} alt={logo.name} className="w-full h-full object-contain filter group-hover:drop-shadow-lg" />
+          <div key={idx} className="flex items-center gap-4 justify-end group">
+            <div className="w-16 h-16 bg-muted/30 rounded-2xl border border-border/50 flex items-center justify-center p-3 hover:scale-110 transition-transform duration-500 shadow-xl backdrop-blur-sm">
+              <img src={logo.icon} alt={logo.name} className="w-full h-full object-contain" />
+            </div>
           </div>
         ))}
       </div>
@@ -137,29 +129,29 @@ export default function Hero() {
         <div
           className={`transition-all duration-1000 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10 mb-10">
-            <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
-            <span className="text-[10px] font-black tracking-[0.3em] text-primary uppercase">INNOVATION FIRST</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 mb-8">
+            <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></div>
+            <span className="text-[10px] font-black tracking-[0.2em] text-primary uppercase">Innovation First</span>
           </div>
 
           <h1
-            className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8 leading-[1] transition-all duration-700"
+            className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mb-8 leading-[1.1] transition-all duration-700"
             style={{
               opacity: isInView ? 1 : 0,
               transform: isInView ? "translateY(0)" : "translateY(20px)",
             }}
           >
-            {t.hero.headline}<br />
-            <span className="relative inline-block italic font-serif text-primary min-w-[200px]">
+            {t.hero.headline}{" "}
+            <span className="relative inline-block text-primary min-w-[200px] text-left italic font-serif">
               {displayedText}
               <span className="animate-pulse not-italic">|</span>
             </span>
             <br />
-            <span className="text-foreground">— {t.hero.fast ? t.hero.fast.replace('.', '') : ''}.</span>
+            <span className="text-foreground">{t.hero.fast}</span>
           </h1>
 
           <p
-            className="text-lg md:text-2xl text-muted-foreground/60 max-w-2xl mx-auto mb-16 leading-relaxed font-medium transition-all duration-700"
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed font-medium transition-all duration-700"
             style={{
               opacity: isInView ? 1 : 0,
               transform: isInView ? "translateY(0)" : "translateY(20px)",
@@ -179,14 +171,14 @@ export default function Hero() {
           >
             <button
               onClick={openContactForm}
-              className="px-14 py-7 bg-black text-white dark:bg-white dark:text-black rounded-full font-black text-xs tracking-widest transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.4)] active:scale-95 group flex items-center gap-4"
+              className="px-12 py-6 bg-primary text-primary-foreground rounded-full font-bold text-xs tracking-widest transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] active:scale-95 group flex items-center gap-3"
             >
               {t.hero.getStarted}
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
             </button>
             <button
               onClick={() => window.open("https://calendly.com/sosikomegrelidze95/new-meeting", "_blank")}
-              className="px-14 py-7 bg-transparent text-foreground border-2 border-border/80 rounded-full font-black text-xs tracking-widest transition-all duration-500 hover:scale-105 hover:bg-muted active:scale-95"
+              className="px-12 py-6 bg-white dark:bg-black text-foreground border border-border rounded-full font-bold text-xs tracking-widest transition-all duration-500 hover:scale-105 hover:bg-muted active:scale-95 group"
             >
               {t.hero.watchDemo}
             </button>
