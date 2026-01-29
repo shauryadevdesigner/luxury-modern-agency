@@ -25,7 +25,6 @@ export default function Home() {
     <main className="min-h-screen bg-background">
       <Navigation />
       <Hero />
-      <Presentation />
       <WhatWeDo />
       <ProofRow />
       <WhyUs />
@@ -35,6 +34,7 @@ export default function Home() {
       <Services />
       <Process />
       <SpeedPromise />
+      <Presentation />
       <CaseStudy />
       <References />
       <Portfolio />
