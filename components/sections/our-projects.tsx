@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { useLanguage } from "@/components/language-provider"
 
 // Project data from the work page
 const FEATURED_PROJECTS = [
@@ -39,6 +40,7 @@ const FEATURED_PROJECTS = [
 export default function OurProjects() {
     const [scrollProgress, setScrollProgress] = useState(0)
     const sectionRef = useRef<HTMLDivElement>(null)
+    const { t } = useLanguage()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -107,15 +109,13 @@ export default function OurProjects() {
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-24">
                     <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium mb-4 bg-blue-500/20 text-blue-400 border border-blue-500/30">
-                        Portfolio
+                        {t.projects.badge}
                     </span>
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6">
-                        Our <span className="italic font-light">projects</span>
-                        <br />
-                        that make a difference
+                        {t.projects.title}
                     </h2>
                     <p className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto">
-                        Discover our latest projects. Modern, high-performing websites designed to convert your visitors into loyal customers.
+                        {t.projects.description}
                     </p>
                 </div>
 
@@ -294,7 +294,7 @@ export default function OurProjects() {
                         href="/work"
                         className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all duration-300 ease-out hover:shadow-lg hover:shadow-blue-500/30 hover:scale-105"
                     >
-                        View All Projects
+                        {t.projects.viewAll}
                     </Link>
                 </div>
             </div>

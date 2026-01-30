@@ -142,6 +142,41 @@ export const translations = {
                     description: "Live Demo. Click and feel the product before it's even built."
                 }
             }
+        },
+        work: {
+            hero: {
+                title: "Our Work",
+                subtitle: "Production-ready products shipped on time. From MVPs to scaling platforms, see what we've built."
+            }
+        },
+        finalCta: {
+            title: "Ready to build something serious?",
+            description: "Let's talk about your idea. We'll show you how fast we can turn it into a production-ready product.",
+            bookCall: "Book a Call",
+            startProject: "Start a Project"
+        },
+        projects: {
+            badge: "Portfolio",
+            title: "Our projects that make a difference",
+            description: "Discover our latest projects. Modern, high-performing websites designed to convert your visitors into loyal customers.",
+            viewAll: "View All Projects"
+        },
+        portfolio: {
+            badge: "Portfolio",
+            title: "Our Recent Work",
+            description: "Explore our latest projects across different industries. Click on any project to view it live.",
+            viewAll: "View All Projects",
+            viewLive: "View Live",
+            categories: {
+                crypto: "Crypto",
+                sports: "Sports",
+                logistics: "Logistics",
+                casino: "Casino",
+                ecommerce: "Ecommerce",
+                saas: "SaaS",
+                music: "Music",
+                restaurant: "Restaurant"
+            }
         }
     },
     fr: {
@@ -286,6 +321,41 @@ export const translations = {
                     title: "Prototypes Interactifs",
                     description: "Démo Live. Cliquez et ressentez le produit avant même qu'il ne soit construit."
                 }
+            }
+        },
+        work: {
+            hero: {
+                title: "Nos Réalisations",
+                subtitle: "Des produits prêts pour la production livrés à temps. Des MVP aux plateformes à grande échelle."
+            }
+        },
+        finalCta: {
+            title: "Prêt à construire quelque chose de sérieux ?",
+            description: "Parlons de votre idée. Nous vous montrerons à quelle vitesse nous pouvons la transformer en un produit prêt pour la production.",
+            bookCall: "Prendre RDV",
+            startProject: "Lancer un projet"
+        },
+        projects: {
+            badge: "Portfolio",
+            title: "Nos projets qui font la différence",
+            description: "Découvrez nos dernières réalisations. Des sites modernes et performants conçus pour convertir vos visiteurs.",
+            viewAll: "Voir tous les projets"
+        },
+        portfolio: {
+            badge: "Portfolio",
+            title: "Nos Travaux Récents",
+            description: "Explorez nos derniers projets à travers différents secteurs. Cliquez sur un projet pour le voir en direct.",
+            viewAll: "Voir tous les projets",
+            viewLive: "Voir le site",
+            categories: {
+                crypto: "Crypto",
+                sports: "Sport",
+                logistics: "Logistique",
+                casino: "Casino",
+                ecommerce: "E-commerce",
+                saas: "SaaS",
+                music: "Musique",
+                restaurant: "Restaurant"
             }
         }
     },

@@ -1,9 +1,9 @@
-"use client"
-
 import { useEffect, useState } from "react"
+import { useLanguage } from "@/components/language-provider"
 
 export default function WorkHero() {
   const [scrollY, setScrollY] = useState(0)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
@@ -16,8 +16,7 @@ export default function WorkHero() {
       {/* Navy gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#1F3C88] via-[#1E40AF] to-[#1F3C88]" />
 
-      {/* Parallax floating shapes - Hexagons and geometric */}
-      {/* Hexagons (using clip-path would need inline SVG, using border approach) */}
+      {/* Parallax floating shapes */}
       <div
         className="absolute w-28 h-28 bg-white/10"
         style={{
@@ -37,7 +36,6 @@ export default function WorkHero() {
         }}
       />
 
-      {/* Circles */}
       <div
         className="absolute w-36 h-36 rounded-full border border-white/15"
         style={{ top: "20%", right: "5%", transform: `translateY(${scrollY * 0.35}px)` }}
@@ -47,7 +45,6 @@ export default function WorkHero() {
         style={{ top: "65%", left: "20%", transform: `translateY(${scrollY * -0.3}px)` }}
       />
 
-      {/* Diamonds */}
       <div
         className="absolute w-20 h-20 border-2 border-white/15 rotate-45"
         style={{ top: "35%", left: "15%", transform: `translateY(${scrollY * 0.4}px) rotate(45deg)` }}
@@ -83,9 +80,9 @@ export default function WorkHero() {
 
       {/* Content */}
       <div className="max-w-7xl mx-auto text-center relative z-10">
-        <h1 className="mb-6 text-white">Our Work</h1>
+        <h1 className="mb-6 text-white">{t.work.hero.title}</h1>
         <p className="text-xl text-white/80 max-w-2xl mx-auto">
-          Production-ready products shipped on time. From MVPs to scaling platforms, see what we've built.
+          {t.work.hero.subtitle}
         </p>
       </div>
     </section>
