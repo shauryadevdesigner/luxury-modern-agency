@@ -1,71 +1,120 @@
 "use client"
 
+import { useEffect, useRef, useState } from "react"
+import { Search, PenTool, Code, Rocket, BarChart } from "lucide-react"
+
 export default function Process() {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef(null)
+
   const steps = [
-    { title: "UX Workshop", description: "Deep dive into your vision, market, and technical requirements." },
-    { title: "Design", description: "Iterative design sprints with rapid prototyping & feedback loops." },
-    { title: "Build & Test", description: "Production-ready code, infrastructure, and automated testing." },
-    { title: "Launch", description: "Ship to production with confidence, monitoring, and analytics." },
+    {
+      icon: Search,
+      title: "Discovery",
+      items: ["Call", "Specs", "Scope & timeline"],
+      description: "We dive deep into your goals to define the perfect roadmap.",
+    },
+    {
+      icon: PenTool,
+      title: "Design",
+      items: ["UX flows", "UI system", "Validation"],
+      description: "Crafting intuitive interfaces and seamless user experiences.",
+    },
+    {
+      icon: Code,
+      title: "Build",
+      items: ["Frontend", "Backend", "Infrastructure"],
+      description: "Engineering robust, scalable code and high-performance systems.",
+    },
+    {
+      icon: Rocket,
+      title: "Launch",
+      items: ["QA", "Deployment", "Monitoring"],
+      description: "Strict quality assurance followed by a flawless go-live.",
+    },
+    {
+      icon: BarChart,
+      title: "Scale & Maintain",
+      items: ["Updates", "Performance", "Support"],
+      description: "Constant iteration and optimization to keep you ahead.",
+    },
   ]
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section className="py-16 md:py-20 px-4 md:px-8 bg-background">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-12">
-          <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-4">Our Process</h2>
-          <p className="text-lg text-foreground/60 max-w-2xl">
-            Simple, transparent, and proven methodology to bring your vision to life in record time.
-          </p>
+    <section ref={sectionRef} className="py-24 md:py-32 bg-background relative overflow-hidden">
+      <div className="container mx-auto px-6 max-w-7xl">
+        <div className="text-center mb-20">
+          <span className="inline-block px-4 py-1.5 bg-muted rounded-full text-sm font-medium text-muted-foreground mb-6">
+            HOW IT WORKS
+          </span>
+          <h2 className={`text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-foreground transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+            Our Proven Process
+          </h2>
         </div>
 
         <div className="relative">
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 md:w-1 opacity-60 md:transform md:-translate-x-1/2 bg-gradient-to-b from-accent-purple via-accent-yellow to-accent-green" />
+          {/* Central Line (Desktop) */}
+          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-border -translate-x-1/2" />
 
-          <div className="space-y-12">
+          <div className="space-y-16 lg:space-y-24">
             {steps.map((step, idx) => (
               <div
                 key={idx}
-                className="relative pl-20 md:pl-0 group"
-                style={{
-                  animationName: "slideUp",
-                  animationDuration: "0.8s",
-                  animationTimingFunction: "ease-out",
-                  animationDelay: `${idx * 0.15}s`,
-                  animationFillMode: "forwards",
-                  opacity: 0,
-                }}
+                className={`relative flex flex-col lg:flex-row items-center gap-8 ${idx % 2 === 0 ? "lg:flex-row-reverse" : ""
+                  }`}
               >
-                <div className="absolute left-0 md:left-1/2 top-2 md:transform md:-translate-x-1/2">
-                  <div className="relative w-10 h-10">
-                    <div
-                      className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                      style={{
-                        background: `radial-gradient(circle, var(--accent-purple) 0%, transparent 70%)`,
-                        filter: "blur(10px)",
-                      }}
-                    />
-                    <div
-                      className="absolute inset-0 rounded-full bg-background border-2 flex items-center justify-center transition-all duration-300 group-hover:scale-125 group-hover:shadow-lg"
-                      style={{
-                        borderColor: `var(--accent-purple)`,
-                        boxShadow: "0 0 0 3px rgba(236, 72, 153, 0.1)",
-                      }}
-                    >
-                      <div className="w-2 h-2 rounded-full" style={{ backgroundColor: `var(--accent-purple)` }} />
+                {/* Step Content */}
+                <div className="lg:w-1/2 w-full">
+                  <div
+                    className={`p-8 bg-background border border-border rounded-3xl hover:border-primary/30 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                      }`}
+                    style={{ transitionDelay: `${0.2 + idx * 0.1}s` }}
+                  >
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-12 h-12 bg-muted rounded-xl flex items-center justify-center text-foreground">
+                        <step.icon size={24} />
+                      </div>
+                      <h3 className="text-2xl font-bold">0{idx + 1}. {step.title}</h3>
+                    </div>
+
+                    <p className="text-muted-foreground mb-8 text-lg">
+                      {step.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-3">
+                      {step.items.map((item, iidx) => (
+                        <span key={iidx} className="px-4 py-1.5 bg-muted/50 rounded-full text-sm font-medium border border-border/50">
+                          {item}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
 
-                <div className={`md:w-1/2 ${idx % 2 === 0 ? "md:pr-20 md:text-right" : "md:pl-20 md:ml-auto"}`}>
-                  <div className="p-6 rounded-lg hover-lift transition-all duration-500 hover:bg-card">
-                    <h3 className="text-2xl font-bold mb-3 transition-colors duration-300">
-                      {idx + 1}. {step.title}
-                    </h3>
-                    <p className="text-foreground/60 group-hover:text-foreground/80 transition-colors duration-300">
-                      {step.description}
-                    </p>
-                  </div>
+                {/* Step Connector Dot */}
+                <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-background border-4 border-primary z-10 items-center justify-center">
+                  <div className="w-2 h-2 rounded-full bg-primary" />
                 </div>
+
+                {/* Spacer for secondary side */}
+                <div className="lg:w-1/2 hidden lg:block" />
               </div>
             ))}
           </div>
