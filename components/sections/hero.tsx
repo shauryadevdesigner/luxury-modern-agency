@@ -131,7 +131,7 @@ export default function Hero() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 mb-8">
             <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></div>
-            <span className="text-[10px] font-black tracking-[0.2em] text-primary uppercase">Innovation First</span>
+            <span className="text-[10px] font-black tracking-[0.2em] text-primary uppercase">{t.hero.badge}</span>
           </div>
 
           <h1

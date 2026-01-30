@@ -3,34 +3,15 @@
 import { useEffect, useRef, useState } from "react"
 import { Database, Clock, BarChart3, Shield } from "lucide-react"
 import { useContactForm } from "@/app/providers"
-
-const problems = [
-  {
-    icon: Database,
-    title: "Data Everywhere",
-    description: "Your data, KPIs, and tasks are split across spreadsheets, chats, and dozens of apps, making it impossible to see the full picture."
-  },
-  {
-    icon: Clock,
-    title: "Trapped in Operations",
-    description: "Instead of focusing on growth, you're stuck micromanaging projects, chasing updates, and putting out fires."
-  },
-  {
-    icon: BarChart3,
-    title: "Guesswork over Growth",
-    description: "Without real-time visibility, decisions are based on gut feeling, and scaling becomes a gamble, not a system."
-  },
-  {
-    icon: Shield,
-    title: "Outsourcing Chaos",
-    description: "Traditional agencies rely on junior developers and unpredictable outsourcing, leading to projects that move in weeks, not days."
-  }
-]
+import { useLanguage } from "@/components/language-provider"
 
 export default function Problems() {
   const { openContactForm } = useContactForm()
+  const { t } = useLanguage()
   const sectionRef = useRef(null)
   const [isInView, setIsInView] = useState(false)
+
+  const icons = [Database, Clock, BarChart3, Shield]
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -55,36 +36,39 @@ export default function Problems() {
         {/* Header */}
         <div className="text-center mb-10">
           <span className="inline-block px-4 py-1.5 bg-muted rounded-full text-sm font-medium text-muted-foreground mb-6">
-            PROBLEMS
+            {t.problems.badge}
           </span>
           <h2
             className={`text-4xl md:text-5xl font-bold text-foreground mb-4 transition-all duration-700 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
           >
-            The chaos that's killing<br />your agency's growth
+            {t.problems.title}
           </h2>
         </div>
 
         {/* Problem Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {problems.map((problem, index) => (
-            <div
-              key={problem.title}
-              className={`p-8 bg-background border border-border rounded-2xl hover:border-primary/30 transition-all duration-500 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
-              style={{ transitionDelay: `${index * 0.1}s` }}
-            >
-              <div className="w-12 h-12 bg-muted rounded-xl flex items-center justify-center mb-6">
-                <problem.icon className="w-6 h-6 text-foreground" />
+          {t.problems.items.map((problem: any, index: number) => {
+            const Icon = icons[index]
+            return (
+              <div
+                key={index}
+                className={`p-8 bg-background border border-border rounded-2xl hover:border-primary/30 transition-all duration-500 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  }`}
+                style={{ transitionDelay: `${index * 0.1}s` }}
+              >
+                <div className="w-12 h-12 bg-muted rounded-xl flex items-center justify-center mb-6">
+                  <Icon className="w-6 h-6 text-foreground" />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground mb-3">
+                  {problem.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {problem.description}
+                </p>
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">
-                {problem.title}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {problem.description}
-              </p>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
         {/* CTA Buttons */}
@@ -97,10 +81,10 @@ export default function Problems() {
             onClick={openContactForm}
             className="px-8 py-3 bg-foreground text-background rounded-full font-semibold text-sm hover:bg-foreground/90 transition-all duration-300"
           >
-            Get Started
+            {t.problems.getStarted}
           </button>
           <button className="px-8 py-3 bg-background text-foreground border border-border rounded-full font-semibold text-sm hover:bg-muted transition-all duration-300">
-            Watch The Demo
+            {t.problems.watchDemo}
           </button>
         </div>
       </div>
