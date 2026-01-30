@@ -77,66 +77,46 @@ export default function Hero() {
 
   return (
     <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden bg-background">
-      {/* Optimized Scattered Elements - Side Walls Positioned Level with Text */}
+      {/* Structured Side Walls - Vertically Centered & Reduced Size */}
 
-      {/* LEFT SIDE WALL GROUP */}
-      <div className="hidden xl:block absolute left-0 top-[60%] -translate-y-1/2 w-1/4 h-[800px] pointer-events-none transition-all duration-300 ease-out z-0"
-        style={{ transform: `translateY(-50%) translateX(-${scrollProgress * 250}px)`, opacity: 1 - scrollProgress }}>
-
-        {/* Notebook Sketch - Far Left Wall */}
-        <div className="absolute left-[-15%] top-[10%] w-[450px] -rotate-12 z-0 opacity-40">
-          <img src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/66585086c450ce5c246e65f2_Side%20Right%20Top.png" alt="" className="w-full h-auto" />
-        </div>
-
-        {/* Discussion Card - Bottom Angle */}
-        <div className="absolute left-[5%] bottom-[5%] w-[420px] rotate-2 z-20">
-          <img src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/6658508666a051ca3d4d43d9_Side%20Left%20Top.png" alt="" className="w-full h-auto drop-shadow-2xl" />
-        </div>
-
-        {/* La French Tech Logo */}
-        <div className="absolute left-[15%] top-[45%] w-32 rotate-[-15deg] z-10 transition-transform hover:scale-110 duration-500">
-          <img src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/665850868778ce771abedb52_Side%20Left%20Bottom.png" alt="" className="w-full h-auto drop-shadow-xl" />
-        </div>
-
-        {/* Bubble Logo Card */}
-        <div className="absolute left-[10%] top-[30%] w-28 h-14 bg-white dark:bg-slate-800 rounded-xl shadow-lg flex items-center justify-center p-3 border border-border rotate-[-8deg] z-10">
-          <img src="https://cdn.worldvectorlogo.com/logos/bubble-1.svg" alt="Bubble" className="h-full w-auto" />
-        </div>
-
-        {/* Excel Icon */}
-        <div className="absolute left-[25%] top-[60%] w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl shadow-lg flex items-center justify-center p-3 border border-border rotate-[20deg] z-10">
-          <img src="https://cdn.worldvectorlogo.com/logos/microsoft-excel-2013.svg" alt="Excel" className="h-full w-auto" />
-        </div>
+      {/* LEFT SIDE WALL */}
+      <div
+        className="hidden xl:flex absolute left-[-6%] top-1/2 -translate-y-1/2 w-[300px] flex-col gap-4 transition-all duration-300 ease-out z-0 pointer-events-none"
+        style={{
+          transform: `translateY(-50%) translateX(-${scrollProgress * 200}px) rotateY(15deg)`,
+          opacity: 1 - (scrollProgress * 1.5),
+        }}
+      >
+        <img
+          src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/6658508666a051ca3d4d43d9_Side%20Left%20Top.png"
+          alt="Top Left Design"
+          className="w-full h-auto drop-shadow-2xl rounded-2xl border border-white/5"
+        />
+        <img
+          src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/665850868778ce771abedb52_Side%20Left%20Bottom.png"
+          alt="Bottom Left Design"
+          className="w-full h-auto drop-shadow-2xl rounded-2xl border border-white/5 -mt-10 ml-8"
+        />
       </div>
 
-      {/* RIGHT SIDE WALL GROUP */}
-      <div className="hidden xl:block absolute right-0 top-[60%] -translate-y-1/2 w-1/4 h-[800px] pointer-events-none transition-all duration-300 ease-out z-0"
-        style={{ transform: `translateY(-50%) translateX(${scrollProgress * 250}px)`, opacity: 1 - scrollProgress }}>
-
-        {/* Slack Mockup - Primary Right Wall */}
-        <div className="absolute right-[-15%] top-[15%] w-[500px] rotate-[-8deg] z-0">
-          <img src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/6658508760ca60d26516e00d_Side%20Right%20Bottom.png" alt="" className="w-full h-auto drop-shadow-2xl" />
-        </div>
-
-        {/* Inpi Logo Card */}
-        <div className="absolute right-[20%] top-[25%] w-28 h-16 bg-white dark:bg-slate-800 rounded-xl shadow-lg flex items-center justify-center p-4 border border-border rotate-[6deg] z-10">
-          <img src="https://upload.wikimedia.org/wikipedia/fr/b/b3/Logo_INPI.svg" alt="Inpi" className="h-full w-auto" />
-        </div>
-
-        {/* Bpifrance Badge */}
-        <div className="absolute right-[12%] top-[50%] px-6 py-3 bg-white dark:bg-slate-800 rounded-xl shadow-lg flex items-center justify-center border border-border rotate-[-4deg] z-10 font-black text-[#FFD700] tracking-tighter text-lg bg-white">
-          bpifrance
-        </div>
-
-        {/* Fiverr Logo */}
-        <div className="absolute right-[28%] bottom-[20%] w-20 h-20 bg-white dark:bg-slate-800 rounded-3xl shadow-lg flex items-center justify-center p-4 border border-border rotate-[15deg] z-10">
-          <img src="https://cdn.worldvectorlogo.com/logos/fiverr.svg" alt="Fiverr" className="h-full w-auto" />
-        </div>
-
-        {/* Societe Brand Pill */}
-        <div className="absolute right-[22%] bottom-[10%] px-8 py-3 bg-white dark:bg-slate-800 rounded-full shadow-lg flex items-center justify-center border border-border rotate-[-10deg] z-10 font-black text-slate-900 dark:text-white tracking-widest text-sm">
-          SOCIETE
-        </div>
+      {/* RIGHT SIDE WALL */}
+      <div
+        className="hidden xl:flex absolute right-[-6%] top-1/2 -translate-y-1/2 w-[320px] flex-col gap-4 transition-all duration-300 ease-out z-0 pointer-events-none"
+        style={{
+          transform: `translateY(-50%) translateX(${scrollProgress * 200}px) rotateY(-15deg)`,
+          opacity: 1 - (scrollProgress * 1.5),
+        }}
+      >
+        <img
+          src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/66585086c450ce5c246e65f2_Side%20Right%20Top.png"
+          alt="Top Right Design"
+          className="w-full h-auto drop-shadow-2xl rounded-2xl border border-white/5"
+        />
+        <img
+          src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/6658508760ca60d26516e00d_Side%20Right%20Bottom.png"
+          alt="Bottom Right Design"
+          className="w-full h-auto drop-shadow-2xl rounded-2xl border border-white/5 -mt-12 -ml-6"
+        />
       </div>
 
       {/* Main Content */}
