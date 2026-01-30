@@ -77,47 +77,6 @@ export default function Hero() {
 
   return (
     <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden bg-background">
-      {/* Structured Side Walls - Vertically Centered & Reduced Size */}
-
-      {/* LEFT SIDE WALL */}
-      <div
-        className="hidden xl:flex absolute left-[-6%] top-1/2 -translate-y-1/2 w-[300px] flex-col gap-4 transition-all duration-300 ease-out z-0 pointer-events-none"
-        style={{
-          transform: `translateY(-50%) translateX(-${scrollProgress * 200}px) rotateY(15deg)`,
-          opacity: 1 - (scrollProgress * 1.5),
-        }}
-      >
-        <img
-          src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/6658508666a051ca3d4d43d9_Side%20Left%20Top.png"
-          alt="Top Left Design"
-          className="w-full h-auto drop-shadow-2xl rounded-2xl border border-white/5"
-        />
-        <img
-          src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/665850868778ce771abedb52_Side%20Left%20Bottom.png"
-          alt="Bottom Left Design"
-          className="w-full h-auto drop-shadow-2xl rounded-2xl border border-white/5 -mt-10 ml-8"
-        />
-      </div>
-
-      {/* RIGHT SIDE WALL */}
-      <div
-        className="hidden xl:flex absolute right-[-6%] top-1/2 -translate-y-1/2 w-[320px] flex-col gap-4 transition-all duration-300 ease-out z-0 pointer-events-none"
-        style={{
-          transform: `translateY(-50%) translateX(${scrollProgress * 200}px) rotateY(-15deg)`,
-          opacity: 1 - (scrollProgress * 1.5),
-        }}
-      >
-        <img
-          src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/66585086c450ce5c246e65f2_Side%20Right%20Top.png"
-          alt="Top Right Design"
-          className="w-full h-auto drop-shadow-2xl rounded-2xl border border-white/5"
-        />
-        <img
-          src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/6658508760ca60d26516e00d_Side%20Right%20Bottom.png"
-          alt="Bottom Right Design"
-          className="w-full h-auto drop-shadow-2xl rounded-2xl border border-white/5 -mt-12 -ml-6"
-        />
-      </div>
 
       {/* Main Content */}
       <div className="max-w-5xl mx-auto relative z-10 text-center px-4" ref={containerRef}>
