@@ -50,28 +50,24 @@ export default function WhyUs() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-20 md:py-28 bg-background relative overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -z-10" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-[100px] -z-10" />
-
-      <div className="container mx-auto px-6 max-w-7xl">
-        {/* Header - Perfectly aligned with Problems section style */}
-        <div className="text-center mb-16">
+    <section ref={sectionRef} className="py-12 md:py-16 px-6 md:px-12 lg:px-24 bg-background">
+      <div className="max-w-6xl mx-auto">
+        {/* Header - Styled exactly like Problems section */}
+        <div className="text-center mb-10">
           <span className="inline-block px-4 py-1.5 bg-muted rounded-full text-sm font-medium text-muted-foreground mb-6">
             WHY US ?
           </span>
-          <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-4 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <h2 className={`text-4xl md:text-5xl font-bold text-foreground mb-4 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             WHY US ? <span className="text-muted-foreground/30 mx-2">VS</span> OTHER AGENCIES
           </h2>
         </div>
 
         {/* Feature Cards Grid - 4 Blocks as requested */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {features.map((feature, idx) => (
             <div
               key={idx}
-              className={`p-8 bg-background border border-border rounded-2xl hover:border-primary/30 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              className={`p-8 bg-background border border-border rounded-2xl hover:border-primary/30 transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                 }`}
               style={{ transitionDelay: `${0.1 * idx}s` }}
             >
@@ -88,7 +84,7 @@ export default function WhyUs() {
           ))}
         </div>
 
-        {/* CTA Buttons */}
+        {/* CTA Buttons - Matching Problems.tsx design */}
         <div
           className={`flex flex-wrap justify-center gap-4 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
