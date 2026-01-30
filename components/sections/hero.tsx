@@ -5,19 +5,6 @@ import { ArrowRight } from "lucide-react"
 import { useContactForm } from "@/app/providers"
 import { useLanguage } from "@/components/language-provider"
 
-const logosLeft = [
-  { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
-  { name: "Supabase", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" },
-  { name: "Tailwind", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" },
-  { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-]
-
-const logosRight = [
-  { name: "Figma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
-  { name: "Framer", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg" },
-  { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-  { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
-]
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -90,38 +77,62 @@ export default function Hero() {
 
   return (
     <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden bg-background">
-      {/* Logos - Left Side */}
+      {/* Side Images - Left Side (Sketches) */}
       <div
-        className="hidden xl:flex absolute left-0 top-1/2 -translate-y-1/2 flex-col gap-12 pl-12 transition-all duration-300 ease-out z-0"
+        className="hidden xl:block absolute left-[-10%] top-1/2 -translate-y-1/2 w-[450px] transition-all duration-300 ease-out z-0 pointer-events-none"
         style={{
-          transform: `translateY(-50%) translateX(-${scrollProgress * 150}%)`,
-          opacity: 1 - scrollProgress,
+          transform: `translateY(-50%) translateX(-${scrollProgress * 150}%) rotateY(15deg)`,
+          opacity: 1 - (scrollProgress * 1.5),
         }}
       >
-        {logosLeft.map((logo, idx) => (
-          <div key={idx} className="flex items-center gap-4 group">
-            <div className="w-16 h-16 bg-muted/30 rounded-2xl border border-border/50 flex items-center justify-center p-3 hover:scale-110 transition-transform duration-500 shadow-xl backdrop-blur-sm">
-              <img src={logo.icon} alt={logo.name} className="w-full h-full object-contain" />
-            </div>
-          </div>
-        ))}
+        <img
+          src="/side-left.png"
+          alt="Product Sketches"
+          className="w-full h-auto drop-shadow-2xl"
+        />
       </div>
 
-      {/* Logos - Right Side */}
+      {/* Side Images - Right Side (Slack Mockup) */}
       <div
-        className="hidden xl:flex absolute right-0 top-1/2 -translate-y-1/2 flex-col gap-12 pr-12 transition-all duration-300 ease-out z-0"
+        className="hidden xl:block absolute right-[-5%] top-1/2 -translate-y-1/2 w-[550px] transition-all duration-300 ease-out z-0 pointer-events-none"
         style={{
-          transform: `translateY(-50%) translateX(${scrollProgress * 150}%)`,
-          opacity: 1 - scrollProgress,
+          transform: `translateY(-50%) translateX(${scrollProgress * 150}%) rotateY(-15deg)`,
+          opacity: 1 - (scrollProgress * 1.5),
         }}
       >
-        {logosRight.map((logo, idx) => (
-          <div key={idx} className="flex items-center gap-4 justify-end group">
-            <div className="w-16 h-16 bg-muted/30 rounded-2xl border border-border/50 flex items-center justify-center p-3 hover:scale-110 transition-transform duration-500 shadow-xl backdrop-blur-sm">
-              <img src={logo.icon} alt={logo.name} className="w-full h-full object-contain" />
-            </div>
-          </div>
-        ))}
+        <img
+          src="/slack.png"
+          alt="Communication Mockup"
+          className="w-full h-auto drop-shadow-2xl"
+        />
+      </div>
+
+      {/* Floating Logos - Scattered for Depth */}
+      <div
+        className="hidden xl:block absolute left-[18%] top-[20%] transition-all duration-300 pointer-events-none"
+        style={{ transform: `translateY(${scrollProgress * 80}px)`, opacity: 1 - scrollProgress }}
+      >
+        <div className="w-28 h-14 bg-white dark:bg-slate-800 rounded-xl shadow-lg flex items-center justify-center p-3 border border-border">
+          <img src="https://cdn.worldvectorlogo.com/logos/bubble-1.svg" alt="Bubble" className="h-full w-auto" />
+        </div>
+      </div>
+
+      <div
+        className="hidden xl:block absolute right-[22%] top-[15%] transition-all duration-300 pointer-events-none"
+        style={{ transform: `translateY(${scrollProgress * -120}px)`, opacity: 1 - scrollProgress }}
+      >
+        <div className="w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl shadow-lg flex items-center justify-center p-3 border border-border rotate-12">
+          <img src="https://cdn.worldvectorlogo.com/logos/fiverr.svg" alt="Fiverr" className="h-full w-auto" />
+        </div>
+      </div>
+
+      <div
+        className="hidden xl:block absolute left-[22%] bottom-[15%] transition-all duration-300 pointer-events-none"
+        style={{ transform: `translateY(${scrollProgress * 50}px)`, opacity: 1 - scrollProgress }}
+      >
+        <div className="px-6 py-2.5 bg-white dark:bg-slate-800 rounded-full shadow-lg flex items-center justify-center border border-border">
+          <span className="font-black text-slate-900 dark:text-white text-base tracking-tighter">SOCIETE</span>
+        </div>
       </div>
 
       {/* Main Content */}
