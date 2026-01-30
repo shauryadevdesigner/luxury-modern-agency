@@ -77,71 +77,65 @@ export default function Hero() {
 
   return (
     <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden bg-background">
-      {/* Side Images - Left Side (Stacked) */}
-      <div
-        className="hidden xl:flex absolute left-[-8%] top-1/2 -translate-y-1/2 flex-col gap-6 w-[380px] transition-all duration-300 ease-out z-0 pointer-events-none"
-        style={{
-          transform: `translateY(-50%) translateX(-${scrollProgress * 150}%) rotateY(10deg)`,
-          opacity: 1 - (scrollProgress * 1.5),
-        }}
-      >
-        <img
-          src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/6658508666a051ca3d4d43d9_Side%20Left%20Top.png"
-          alt="Interface Design Left Top"
-          className="w-full h-auto drop-shadow-2xl rounded-2xl"
-        />
-        <img
-          src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/665850868778ce771abedb52_Side%20Left%20Bottom.png"
-          alt="Interface Design Left Bottom"
-          className="w-full h-auto drop-shadow-2xl rounded-2xl"
-        />
-      </div>
+      {/* Optimized Scattered Elements - Matching Reference Image Structure */}
 
-      {/* Side Images - Right Side (Stacked) */}
-      <div
-        className="hidden xl:flex absolute right-[-8%] top-1/2 -translate-y-1/2 flex-col gap-6 w-[380px] transition-all duration-300 ease-out z-0 pointer-events-none"
-        style={{
-          transform: `translateY(-50%) translateX(${scrollProgress * 150}%) rotateY(-10deg)`,
-          opacity: 1 - (scrollProgress * 1.5),
-        }}
-      >
-        <img
-          src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/66585086c450ce5c246e65f2_Side%20Right%20Top.png"
-          alt="Interface Design Right Top"
-          className="w-full h-auto drop-shadow-2xl rounded-2xl"
-        />
-        <img
-          src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/6658508760ca60d26516e00d_Side%20Right%20Bottom.png"
-          alt="Interface Design Right Bottom"
-          className="w-full h-auto drop-shadow-2xl rounded-2xl"
-        />
-      </div>
+      {/* LEFT SIDE GROUP */}
+      <div className="hidden xl:block pointer-events-none transition-all duration-300 ease-out"
+        style={{ transform: `translateX(-${scrollProgress * 200}px)`, opacity: 1 - scrollProgress }}>
 
-      {/* Floating Logos - Scattered for Depth */}
-      <div
-        className="hidden xl:block absolute left-[18%] top-[20%] transition-all duration-300 pointer-events-none"
-        style={{ transform: `translateY(${scrollProgress * 80}px)`, opacity: 1 - scrollProgress }}
-      >
-        <div className="w-28 h-14 bg-white dark:bg-slate-800 rounded-xl shadow-lg flex items-center justify-center p-3 border border-border">
+        {/* Notebook Sketch - Far Left */}
+        <div className="absolute left-[-5%] bottom-[10%] w-[350px] -rotate-12 z-0">
+          <img src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/66585086c450ce5c246e65f2_Side%20Right%20Top.png" alt="" className="w-full h-auto" />
+        </div>
+
+        {/* Discussion Card - Bottom Left */}
+        <div className="absolute left-[2%] bottom-[-5%] w-[400px] rotate-3 z-20">
+          <img src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/6658508666a051ca3d4d43d9_Side%20Left%20Top.png" alt="" className="w-full h-auto drop-shadow-2xl" />
+        </div>
+
+        {/* La French Tech Logo */}
+        <div className="absolute left-[8%] bottom-[25%] w-32 rotate-[-15deg] z-10">
+          <img src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/665850868778ce771abedb52_Side%20Left%20Bottom.png" alt="" className="w-full h-auto drop-shadow-xl" />
+        </div>
+
+        {/* Bubble Logo Card */}
+        <div className="absolute left-[6%] bottom-[45%] w-24 h-12 bg-white dark:bg-slate-800 rounded-lg shadow-lg flex items-center justify-center p-2 border border-border rotate-[-5deg] z-10">
           <img src="https://cdn.worldvectorlogo.com/logos/bubble-1.svg" alt="Bubble" className="h-full w-auto" />
         </div>
-      </div>
 
-      <div
-        className="hidden xl:block absolute right-[22%] top-[15%] transition-all duration-300 pointer-events-none"
-        style={{ transform: `translateY(${scrollProgress * -120}px)`, opacity: 1 - scrollProgress }}
-      >
-        <div className="w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl shadow-lg flex items-center justify-center p-3 border border-border rotate-12">
-          <img src="https://cdn.worldvectorlogo.com/logos/fiverr.svg" alt="Fiverr" className="h-full w-auto" />
+        {/* Excel Icon */}
+        <div className="absolute left-[18%] bottom-[35%] w-14 h-14 bg-white dark:bg-slate-800 rounded-xl shadow-lg flex items-center justify-center p-2 border border-border rotate-[15deg] z-10">
+          <img src="https://cdn.worldvectorlogo.com/logos/microsoft-excel-2013.svg" alt="Excel" className="h-full w-auto" />
         </div>
       </div>
 
-      <div
-        className="hidden xl:block absolute left-[22%] bottom-[15%] transition-all duration-300 pointer-events-none"
-        style={{ transform: `translateY(${scrollProgress * 50}px)`, opacity: 1 - scrollProgress }}
-      >
-        <div className="px-6 py-2.5 bg-white dark:bg-slate-800 rounded-full shadow-lg flex items-center justify-center border border-border">
-          <span className="font-black text-slate-900 dark:text-white text-base tracking-tighter">SOCIETE</span>
+      {/* RIGHT SIDE GROUP */}
+      <div className="hidden xl:block pointer-events-none transition-all duration-300 ease-out"
+        style={{ transform: `translateX(${scrollProgress * 200}px)`, opacity: 1 - scrollProgress }}>
+
+        {/* Slack Mockup - Primary Right */}
+        <div className="absolute right-[-10%] bottom-[5%] w-[450px] rotate-[-5deg] z-0">
+          <img src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/6658508760ca60d26516e00d_Side%20Right%20Bottom.png" alt="" className="w-full h-auto drop-shadow-2xl" />
+        </div>
+
+        {/* Inpi Logo */}
+        <div className="absolute right-[15%] bottom-[40%] w-24 h-14 bg-white dark:bg-slate-800 rounded-xl shadow-lg flex items-center justify-center p-3 border border-border rotate-[5deg] z-10">
+          <img src="https://upload.wikimedia.org/wikipedia/fr/b/b3/Logo_INPI.svg" alt="Inpi" className="h-full w-auto" />
+        </div>
+
+        {/* Bpifrance Logo */}
+        <div className="absolute right-[10%] bottom-[25%] px-5 py-2.5 bg-white dark:bg-slate-800 rounded-lg shadow-lg flex items-center justify-center border border-border rotate-[-2deg] z-10">
+          <span className="font-black text-[#FFD700] text-sm tracking-tighter">bpifrance</span>
+        </div>
+
+        {/* Fiverr Logo */}
+        <div className="absolute right-[22%] bottom-[15%] w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl shadow-lg flex items-center justify-center p-3 border border-border rotate-[12deg] z-10">
+          <img src="https://cdn.worldvectorlogo.com/logos/fiverr.svg" alt="Fiverr" className="h-full w-auto" />
+        </div>
+
+        {/* Societe Brand */}
+        <div className="absolute right-[18%] bottom-[5%] px-6 py-2 bg-white dark:bg-slate-800 rounded-full shadow-lg flex items-center justify-center border border-border rotate-[-8deg] z-10">
+          <span className="font-black text-slate-900 dark:text-white text-sm tracking-tighter">SOCIETE</span>
         </div>
       </div>
 
