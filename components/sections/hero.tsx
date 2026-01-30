@@ -77,65 +77,65 @@ export default function Hero() {
 
   return (
     <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden bg-background">
-      {/* Optimized Scattered Elements - Matching Reference Image Structure */}
+      {/* Optimized Scattered Elements - Side Walls Positioned Level with Text */}
 
-      {/* LEFT SIDE GROUP */}
-      <div className="hidden xl:block pointer-events-none transition-all duration-300 ease-out"
-        style={{ transform: `translateX(-${scrollProgress * 200}px)`, opacity: 1 - scrollProgress }}>
+      {/* LEFT SIDE WALL GROUP */}
+      <div className="hidden xl:block absolute left-0 top-[60%] -translate-y-1/2 w-1/4 h-[800px] pointer-events-none transition-all duration-300 ease-out z-0"
+        style={{ transform: `translateY(-50%) translateX(-${scrollProgress * 250}px)`, opacity: 1 - scrollProgress }}>
 
-        {/* Notebook Sketch - Far Left */}
-        <div className="absolute left-[-5%] bottom-[10%] w-[350px] -rotate-12 z-0">
+        {/* Notebook Sketch - Far Left Wall */}
+        <div className="absolute left-[-15%] top-[10%] w-[450px] -rotate-12 z-0 opacity-40">
           <img src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/66585086c450ce5c246e65f2_Side%20Right%20Top.png" alt="" className="w-full h-auto" />
         </div>
 
-        {/* Discussion Card - Bottom Left */}
-        <div className="absolute left-[2%] bottom-[-5%] w-[400px] rotate-3 z-20">
+        {/* Discussion Card - Bottom Angle */}
+        <div className="absolute left-[5%] bottom-[5%] w-[420px] rotate-2 z-20">
           <img src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/6658508666a051ca3d4d43d9_Side%20Left%20Top.png" alt="" className="w-full h-auto drop-shadow-2xl" />
         </div>
 
         {/* La French Tech Logo */}
-        <div className="absolute left-[8%] bottom-[25%] w-32 rotate-[-15deg] z-10">
+        <div className="absolute left-[15%] top-[45%] w-32 rotate-[-15deg] z-10 transition-transform hover:scale-110 duration-500">
           <img src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/665850868778ce771abedb52_Side%20Left%20Bottom.png" alt="" className="w-full h-auto drop-shadow-xl" />
         </div>
 
         {/* Bubble Logo Card */}
-        <div className="absolute left-[6%] bottom-[45%] w-24 h-12 bg-white dark:bg-slate-800 rounded-lg shadow-lg flex items-center justify-center p-2 border border-border rotate-[-5deg] z-10">
+        <div className="absolute left-[10%] top-[30%] w-28 h-14 bg-white dark:bg-slate-800 rounded-xl shadow-lg flex items-center justify-center p-3 border border-border rotate-[-8deg] z-10">
           <img src="https://cdn.worldvectorlogo.com/logos/bubble-1.svg" alt="Bubble" className="h-full w-auto" />
         </div>
 
         {/* Excel Icon */}
-        <div className="absolute left-[18%] bottom-[35%] w-14 h-14 bg-white dark:bg-slate-800 rounded-xl shadow-lg flex items-center justify-center p-2 border border-border rotate-[15deg] z-10">
+        <div className="absolute left-[25%] top-[60%] w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl shadow-lg flex items-center justify-center p-3 border border-border rotate-[20deg] z-10">
           <img src="https://cdn.worldvectorlogo.com/logos/microsoft-excel-2013.svg" alt="Excel" className="h-full w-auto" />
         </div>
       </div>
 
-      {/* RIGHT SIDE GROUP */}
-      <div className="hidden xl:block pointer-events-none transition-all duration-300 ease-out"
-        style={{ transform: `translateX(${scrollProgress * 200}px)`, opacity: 1 - scrollProgress }}>
+      {/* RIGHT SIDE WALL GROUP */}
+      <div className="hidden xl:block absolute right-0 top-[60%] -translate-y-1/2 w-1/4 h-[800px] pointer-events-none transition-all duration-300 ease-out z-0"
+        style={{ transform: `translateY(-50%) translateX(${scrollProgress * 250}px)`, opacity: 1 - scrollProgress }}>
 
-        {/* Slack Mockup - Primary Right */}
-        <div className="absolute right-[-10%] bottom-[5%] w-[450px] rotate-[-5deg] z-0">
+        {/* Slack Mockup - Primary Right Wall */}
+        <div className="absolute right-[-15%] top-[15%] w-[500px] rotate-[-8deg] z-0">
           <img src="https://cdn.prod.website-files.com/6656e67ba33eadc8d460da9f/6658508760ca60d26516e00d_Side%20Right%20Bottom.png" alt="" className="w-full h-auto drop-shadow-2xl" />
         </div>
 
-        {/* Inpi Logo */}
-        <div className="absolute right-[15%] bottom-[40%] w-24 h-14 bg-white dark:bg-slate-800 rounded-xl shadow-lg flex items-center justify-center p-3 border border-border rotate-[5deg] z-10">
+        {/* Inpi Logo Card */}
+        <div className="absolute right-[20%] top-[25%] w-28 h-16 bg-white dark:bg-slate-800 rounded-xl shadow-lg flex items-center justify-center p-4 border border-border rotate-[6deg] z-10">
           <img src="https://upload.wikimedia.org/wikipedia/fr/b/b3/Logo_INPI.svg" alt="Inpi" className="h-full w-auto" />
         </div>
 
-        {/* Bpifrance Logo */}
-        <div className="absolute right-[10%] bottom-[25%] px-5 py-2.5 bg-white dark:bg-slate-800 rounded-lg shadow-lg flex items-center justify-center border border-border rotate-[-2deg] z-10">
-          <span className="font-black text-[#FFD700] text-sm tracking-tighter">bpifrance</span>
+        {/* Bpifrance Badge */}
+        <div className="absolute right-[12%] top-[50%] px-6 py-3 bg-white dark:bg-slate-800 rounded-xl shadow-lg flex items-center justify-center border border-border rotate-[-4deg] z-10 font-black text-[#FFD700] tracking-tighter text-lg bg-white">
+          bpifrance
         </div>
 
         {/* Fiverr Logo */}
-        <div className="absolute right-[22%] bottom-[15%] w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl shadow-lg flex items-center justify-center p-3 border border-border rotate-[12deg] z-10">
+        <div className="absolute right-[28%] bottom-[20%] w-20 h-20 bg-white dark:bg-slate-800 rounded-3xl shadow-lg flex items-center justify-center p-4 border border-border rotate-[15deg] z-10">
           <img src="https://cdn.worldvectorlogo.com/logos/fiverr.svg" alt="Fiverr" className="h-full w-auto" />
         </div>
 
-        {/* Societe Brand */}
-        <div className="absolute right-[18%] bottom-[5%] px-6 py-2 bg-white dark:bg-slate-800 rounded-full shadow-lg flex items-center justify-center border border-border rotate-[-8deg] z-10">
-          <span className="font-black text-slate-900 dark:text-white text-sm tracking-tighter">SOCIETE</span>
+        {/* Societe Brand Pill */}
+        <div className="absolute right-[22%] bottom-[10%] px-8 py-3 bg-white dark:bg-slate-800 rounded-full shadow-lg flex items-center justify-center border border-border rotate-[-10deg] z-10 font-black text-slate-900 dark:text-white tracking-widest text-sm">
+          SOCIETE
         </div>
       </div>
 
