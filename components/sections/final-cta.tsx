@@ -1,3 +1,5 @@
+"use client"
+
 import { ArrowRight } from "lucide-react"
 import { useContactForm } from "@/app/providers"
 import { useLanguage } from "@/components/language-provider"
