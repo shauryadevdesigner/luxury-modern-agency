@@ -111,6 +111,37 @@ export const translations = {
                     items: ["Updates", "Performance", "Support"],
                 },
             ]
+        },
+        features: {
+            badge: "Expertise & Services",
+            title: "All your agency operations in one software",
+            subtitle: "All your data, your systems and your structure, in one platform.",
+            cards: {
+                hub: {
+                    title: "One Hub for All Operations",
+                    description: "All your leads, accounts, systems and tools, grouped in one place."
+                },
+                automations: {
+                    title: "Automations that Works for You",
+                    description: "Operations, reports, notifications, and status updates happen automatically, saving 80% of manual work."
+                },
+                scale: {
+                    title: "Built to Scale",
+                    description: "Scale more models and organize more operations without breaking your backend."
+                },
+                grow: {
+                    title: "Built to Grow with You",
+                    description: "Scaling your business shouldn't be a technical nightmare. We build for the long term."
+                },
+                design: {
+                    title: "Your app's screens with a sexy UX/UI design",
+                    description: "Having a good design is no longer optional. To stand out, find users, or raise funds, you need a quality design."
+                },
+                prototype: {
+                    title: "Interactive Prototypes",
+                    description: "Live Demo. Click and feel the product before it's even built."
+                }
+            }
         }
     },
     fr: {
@@ -225,6 +256,37 @@ export const translations = {
                     items: ["Updates", "Performance", "Support"],
                 },
             ]
+        },
+        features: {
+            badge: "Expertise & Services",
+            title: "Gérez toutes vos opérations en un seul logiciel",
+            subtitle: "Toutes vos données, vos systèmes et votre structure, sur une seule plateforme.",
+            cards: {
+                hub: {
+                    title: "Un Hub pour toutes vos Opérations",
+                    description: "Vos leads, comptes, systèmes et outils, regroupés au même endroit."
+                },
+                automations: {
+                    title: "Des Automatisations à votre Service",
+                    description: "Opérations, rapports, notifications et mises à jour de statut se font automatiquement."
+                },
+                scale: {
+                    title: "Conçu pour l'Échelle",
+                    description: "Développez plus de modèles et organisez plus d'opérations sans casser votre backend."
+                },
+                grow: {
+                    title: "Conçu pour Grandir avec Vous",
+                    description: "Faire croître votre entreprise ne devrait pas être un cauchemar technique. Nous bâtissons pour le long terme."
+                },
+                design: {
+                    title: "Un Design UX/UI Sexy pour vos Écrans",
+                    description: "Un bon design n'est plus optionnel. Pour se démarquer, il faut une qualité irréprochable."
+                },
+                prototype: {
+                    title: "Prototypes Interactifs",
+                    description: "Démo Live. Cliquez et ressentez le produit avant même qu'il ne soit construit."
+                }
+            }
         }
     },
 }
