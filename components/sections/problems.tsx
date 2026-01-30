@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { Database, Clock, BarChart3 } from "lucide-react"
+import { Database, Clock, BarChart3, Shield } from "lucide-react"
 import { useContactForm } from "@/app/providers"
 
 const problems = [
@@ -19,6 +19,11 @@ const problems = [
     icon: BarChart3,
     title: "Guesswork over Growth",
     description: "Without real-time visibility, decisions are based on gut feeling, and scaling becomes a gamble, not a system."
+  },
+  {
+    icon: Shield,
+    title: "Outsourcing Chaos",
+    description: "Traditional agencies rely on junior developers and unpredictable outsourcing, leading to projects that move in weeks, not days."
   }
 ]
 
@@ -52,23 +57,21 @@ export default function Problems() {
           <span className="inline-block px-4 py-1.5 bg-muted rounded-full text-sm font-medium text-muted-foreground mb-6">
             PROBLEMS
           </span>
-          <h2 
-            className={`text-4xl md:text-5xl font-bold text-foreground mb-4 transition-all duration-700 ${
-              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+          <h2
+            className={`text-4xl md:text-5xl font-bold text-foreground mb-4 transition-all duration-700 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
           >
             The chaos that's killing<br />your agency's growth
           </h2>
         </div>
 
         {/* Problem Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {problems.map((problem, index) => (
             <div
               key={problem.title}
-              className={`p-8 bg-background border border-border rounded-2xl hover:border-primary/30 transition-all duration-500 ${
-                isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`p-8 bg-background border border-border rounded-2xl hover:border-primary/30 transition-all duration-500 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
               style={{ transitionDelay: `${index * 0.1}s` }}
             >
               <div className="w-12 h-12 bg-muted rounded-xl flex items-center justify-center mb-6">
@@ -85,13 +88,12 @@ export default function Problems() {
         </div>
 
         {/* CTA Buttons */}
-        <div 
-          className={`flex flex-wrap justify-center gap-4 transition-all duration-700 ${
-            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+        <div
+          className={`flex flex-wrap justify-center gap-4 transition-all duration-700 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
           style={{ transitionDelay: "0.4s" }}
         >
-          <button 
+          <button
             onClick={openContactForm}
             className="px-8 py-3 bg-foreground text-background rounded-full font-semibold text-sm hover:bg-foreground/90 transition-all duration-300"
           >
