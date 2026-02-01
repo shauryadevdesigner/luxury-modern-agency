@@ -31,30 +31,31 @@ export default function TechStackCarousel() {
       </div>
 
       <div className="flex flex-col gap-8">
-        {/* Row 1: moves to the right */}
+        {/* Row 1: moves from LEFT TO RIGHT */}
         <div className="relative w-full overflow-hidden">
           <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background via-background/80 to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background via-background/80 to-transparent z-10 pointer-events-none" />
 
-          <div className="flex w-max animate-marquee-right hover:[animation-play-state:paused]" style={{ "--duration": "25s" } as any}>
+          <div className="flex w-max animate-scroll-right pause-on-hover" style={{ "--duration": "25s" } as any}>
             {[...row1, ...row1, ...row1, ...row1].map((tech, index) => (
               <TechIcon key={index} tech={tech} />
             ))}
           </div>
         </div>
 
-        {/* Row 2: moves to the left */}
+        {/* Row 2: moves from RIGHT TO LEFT */}
         <div className="relative w-full overflow-hidden">
           <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background via-background/80 to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background via-background/80 to-transparent z-10 pointer-events-none" />
 
-          <div className="flex w-max animate-marquee-left hover:[animation-play-state:paused]" style={{ "--duration": "30s" } as any}>
+          <div className="flex w-max animate-scroll-left pause-on-hover" style={{ "--duration": "30s" } as any}>
             {[...row2, ...row2, ...row2, ...row2].map((tech, index) => (
               <TechIcon key={index} tech={tech} />
             ))}
           </div>
         </div>
       </div>
+
     </section>
   )
 }
