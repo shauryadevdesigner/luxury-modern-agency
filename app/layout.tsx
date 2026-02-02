@@ -34,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geist.className} antialiased bg-background text-foreground`}>
+      <body className={`${geist.className} antialiased bg-background text-foreground overflow-x-hidden`}>
         <LanguageProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <ClientLayout>{children}</ClientLayout>
