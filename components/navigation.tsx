@@ -96,126 +96,118 @@ export default function Navigation() {
   const inactiveTextClass = isOverDark ? "text-white/70" : "text-muted-foreground"
 
   return (
-    <nav ref={navRef} className="fixed top-0 w-full z-50 transition-all duration-500 ease-out py-6">
-      <div className="max-w-7xl mx-auto px-6">
-        <div
-          className={`relative flex items-center justify-between px-6 py-3 rounded-2xl transition-all duration-500 ease-out border shadow-2xl ${scrolled || isOverDark
-            ? "bg-black text-white border-white/10"
-            : "bg-white/80 backdrop-blur-md border-slate-200/50"
-            }`}
-        >
-          {/* Logo */}
-          <Link href="/" className="transition-all duration-300 hover:scale-105 flex-shrink-0">
-            <div className="flex items-center gap-2">
-              <span className="font-black text-xl tracking-tighter">Qlyra</span>
-            </div>
-          </Link>
-
-          {/* Navigation Items (Middle) */}
-          <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
-            {navItems.map((item, index) => {
-              const isActive = pathname === item.href
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                  className={`relative text-xs font-bold uppercase tracking-widest transition-all duration-300 ${isActive || hoveredIndex === index
-                    ? "text-primary opacity-100"
-                    : scrolled || isOverDark ? "text-white/70 hover:text-white" : "text-slate-600 hover:text-black"
-                    }`}
-                >
-                  {item.label}
-                  <div
-                    className={`absolute -bottom-1 left-0 right-0 h-0.5 bg-primary transition-all duration-300 ${isActive || hoveredIndex === index ? "w-full" : "w-0"}`}
-                  />
-                </Link>
-              )
-            })}
+    <nav
+      ref={navRef}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
+        ? "py-4 bg-white/80 dark:bg-black/80 backdrop-blur-lg border-b border-border shadow-sm"
+        : "py-6 bg-transparent"
+        }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2 group transition-all duration-300">
+          <div className="w-9 h-9 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 group-hover:rotate-6 transition-transform">
+            <span className="text-white font-black text-lg">Q</span>
           </div>
+          <span className={`text-xl font-black tracking-tighter ${scrolled ? "text-foreground" : "text-foreground dark:text-white"}`}>
+            Qlyra
+          </span>
+        </Link>
 
-          <div className="hidden md:flex items-center gap-4 flex-shrink-0">
-            <button
-              onClick={toggleLanguage}
-              className={`text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full border transition-all duration-300 ${scrolled || isOverDark ? "border-white/10 hover:bg-white/10" : "border-slate-200 hover:bg-slate-50"}`}
-            >
-              {language}
-            </button>
-            <button
-              onClick={openContactForm}
-              className="text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity"
-            >
-              {t.nav.contact}
-            </button>
-            <button
-              onClick={() => window.open(CALENDLY_URL, "_blank")}
-              className="px-6 py-2.5 bg-white text-black text-xs font-bold uppercase tracking-widest rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg"
-            >
-              {t.nav.bookCall}
-            </button>
-          </div>
+        {/* Navigation Items (Middle) */}
+        <div className="hidden md:flex items-center gap-10">
+          {[
+            { label: "Solutions", href: "/#realisation" },
+            { label: "Resources", href: "/#proof" },
+            { label: "Pricing", href: "/#pricing" },
+            { label: "Become Affiliate", href: "/#contact" },
+          ].map((item, index) => {
+            return (
+              <Link
+                key={index}
+                href={item.href}
+                className={`text-[14px] font-semibold transition-all duration-300 ${scrolled
+                    ? "text-gray-600 hover:text-black"
+                    : "text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white"
+                  }`}
+              >
+                {item.label}
+              </Link>
+            )
+          })}
+        </div>
 
-          {/* Mobile Menu Button */}
+        {/* Right Actions */}
+        <div className="hidden md:flex items-center gap-8">
           <button
-            onClick={() => setIsOpen(!isOpen)}
-            className={`md:hidden p-2 rounded-xl transition-all duration-300 ${scrolled || isOverDark ? "text-white hover:bg-white/10" : "text-slate-900 hover:bg-slate-100"}`}
+            onClick={openContactForm}
+            className={`text-[14px] font-semibold transition-all ${scrolled ? "text-gray-600 hover:text-black" : "text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white"
+              }`}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            Login
+          </button>
+          <button
+            onClick={() => window.open(CALENDLY_URL, "_blank")}
+            className={`px-8 py-3 text-[14px] font-bold rounded-full border transition-all duration-300 ${scrolled
+                ? "bg-black text-white border-black hover:bg-gray-800"
+                : "bg-white text-black border-white hover:bg-gray-100"
+              }`}
+          >
+            Start for free
           </button>
         </div>
 
-        {isOpen && (
-          <div className="md:hidden mt-2 bg-background/95 backdrop-blur-xl rounded-3xl border border-border shadow-xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-300">
-            <div className="p-4 flex flex-col gap-1">
-              {navItems.map((item) => {
-                const isActive = pathname === item.href
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`px-4 py-3 rounded-xl text-sm font-bold tracking-widest transition-all duration-300 ${isActive ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                      }`}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                )
-              })}
-              <div className="flex flex-col gap-2 pt-4 mt-2 border-t border-border">
-                <div className="flex justify-between items-center px-4">
-                  <button onClick={toggleLanguage} className="flex items-center gap-2 text-sm font-bold">
-                    <Globe size={18} /> {language === "en" ? "French" : "English"}
-                  </button>
-                  <button onClick={toggleTheme} className="flex items-center gap-2 text-sm font-bold">
-                    {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />} {theme === "dark" ? "Light" : "Dark"}
-                  </button>
-                </div>
-                <div className="flex gap-2 mt-2">
-                  <button
-                    onClick={() => {
-                      setIsOpen(false)
-                      openContactForm()
-                    }}
-                    className="flex-1 px-4 py-3 bg-muted text-foreground rounded-xl font-bold text-xs tracking-widest transition-all duration-300 hover:bg-muted/80"
-                  >
-                    {t.nav.contact}
-                  </button>
-                  <button
-                    onClick={() => {
-                      setIsOpen(false)
-                      window.open(CALENDLY_URL, "_blank")
-                    }}
-                    className="flex-1 px-4 py-3 bg-primary text-primary-foreground rounded-xl font-bold text-xs tracking-widest transition-all duration-300 hover:bg-primary/90"
-                  >
-                    {t.nav.bookCall}
-                  </button>
-                </div>
-              </div>
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className={`md:hidden p-2 rounded-xl transition-all duration-300 ${scrolled ? "text-foreground hover:bg-muted" : "text-foreground dark:text-white hover:bg-white/10"
+            }`}
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {isOpen && (
+        <div className="md:hidden mt-2 mx-6 bg-white dark:bg-black rounded-3xl border border-border shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-300">
+          <div className="p-6 flex flex-col gap-4">
+            {[
+              { label: "Solutions", href: "/#realisation" },
+              { label: "Resources", href: "/#proof" },
+              { label: "Pricing", href: "/#pricing" },
+              { label: "Become Affiliate", href: "/#contact" },
+            ].map((item, index) => (
+              <Link
+                key={index}
+                href={item.href}
+                className="text-lg font-bold text-gray-600 dark:text-gray-400"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <div className="pt-6 border-t border-border flex flex-col gap-4">
+              <button
+                onClick={() => {
+                  setIsOpen(false)
+                  openContactForm()
+                }}
+                className="w-full py-4 text-center font-bold text-gray-600 dark:text-gray-400"
+              >
+                Login
+              </button>
+              <button
+                onClick={() => {
+                  setIsOpen(false)
+                  window.open(CALENDLY_URL, "_blank")
+                }}
+                className="w-full py-4 bg-primary text-white rounded-2xl font-bold"
+              >
+                Start for free
+              </button>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </nav>
   )
 }
