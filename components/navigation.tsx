@@ -96,90 +96,61 @@ export default function Navigation() {
   const inactiveTextClass = isOverDark ? "text-white/70" : "text-muted-foreground"
 
   return (
-    <nav ref={navRef} className="fixed top-0 w-full z-50 transition-all duration-500 ease-out">
-      <div className="max-w-7xl mx-auto px-4 py-4">
+    <nav ref={navRef} className="fixed top-0 w-full z-50 transition-all duration-500 ease-out py-6">
+      <div className="max-w-7xl mx-auto px-6">
         <div
-          className={`relative flex items-center justify-between px-4 md:px-6 py-2 rounded-full transition-all duration-500 ease-out ${scrolled || isOverDark
-              ? isOverDark
-                ? "bg-slate-900/80 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/20"
-                : "bg-white/90 backdrop-blur-xl border border-slate-200/50 shadow-xl shadow-slate-200/50"
-              : "bg-white/90 backdrop-blur-xl border border-slate-200/50 shadow-lg"
+          className={`relative flex items-center justify-between px-6 py-3 rounded-2xl transition-all duration-500 ease-out border shadow-2xl ${scrolled || isOverDark
+            ? "bg-black text-white border-white/10"
+            : "bg-white/80 backdrop-blur-md border-slate-200/50"
             }`}
         >
           {/* Logo */}
           <Link href="/" className="transition-all duration-300 hover:scale-105 flex-shrink-0">
             <div className="flex items-center gap-2">
-              <Image
-                src="/logo.jpg"
-                alt="Qlyra Logo"
-                width={120}
-                height={40}
-                className={`h-8 w-auto object-contain ${theme === 'dark' ? 'invert brightness-200' : ''}`}
-              />
+              <span className="font-black text-xl tracking-tighter">Qlyra</span>
             </div>
           </Link>
 
-          {/* Navigation Items with Capsule Animation */}
-          <div className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2 bg-muted/30 p-1 rounded-full border border-border/50">
-            <div className="relative flex">
-              {navItems.map((item, index) => {
-                const isActive = pathname === item.href
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                    className={`relative px-6 py-2 rounded-full text-xs font-bold tracking-widest transition-all duration-300 z-10 ${isActive || hoveredIndex === index
-                        ? "text-primary-foreground"
-                        : inactiveTextClass
-                      }`}
-                  >
-                    {item.label}
-                    {(isActive || hoveredIndex === index) && (
-                      <div
-                        className="absolute inset-0 bg-primary rounded-full -z-10 transition-all duration-300 ease-in-out"
-                        style={{
-                          opacity: (isActive && hoveredIndex === null) || hoveredIndex === index ? 1 : 0,
-                        }}
-                      />
-                    )}
-                  </Link>
-                )
-              })}
-            </div>
+          {/* Navigation Items (Middle) */}
+          <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+            {navItems.map((item, index) => {
+              const isActive = pathname === item.href
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  className={`relative text-xs font-bold uppercase tracking-widest transition-all duration-300 ${isActive || hoveredIndex === index
+                    ? "text-primary opacity-100"
+                    : scrolled || isOverDark ? "text-white/70 hover:text-white" : "text-slate-600 hover:text-black"
+                    }`}
+                >
+                  {item.label}
+                  <div
+                    className={`absolute -bottom-1 left-0 right-0 h-0.5 bg-primary transition-all duration-300 ${isActive || hoveredIndex === index ? "w-full" : "w-0"}`}
+                  />
+                </Link>
+              )
+            })}
           </div>
 
-          <div className="hidden md:flex items-center gap-2 flex-shrink-0">
-            {/* Language Toggle */}
+          <div className="hidden md:flex items-center gap-4 flex-shrink-0">
             <button
               onClick={toggleLanguage}
-              className={`p-2 rounded-full transition-all duration-300 hover:bg-muted flex items-center gap-1 text-xs font-bold ${textColorClass}`}
+              className={`text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full border transition-all duration-300 ${scrolled || isOverDark ? "border-white/10 hover:bg-white/10" : "border-slate-200 hover:bg-slate-50"}`}
             >
-              <Globe size={16} />
-              {language.toUpperCase()}
+              {language}
             </button>
-
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className={`p-2 rounded-full transition-all duration-300 hover:bg-muted ${textColorClass}`}
-            >
-              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
-
             <button
               onClick={openContactForm}
-              className={`px-4 py-2 rounded-full font-bold text-xs tracking-widest transition-all duration-300 hover:scale-105 active:scale-95 ${isOverDark
-                  ? "text-white/80 hover:text-white hover:bg-white/10"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                }`}
+              className="text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity"
             >
               {t.nav.contact}
             </button>
             <button
               onClick={() => window.open(CALENDLY_URL, "_blank")}
-              className="px-6 py-2 bg-primary text-primary-foreground rounded-full font-bold text-xs tracking-widest transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95"
+              className="px-6 py-2.5 bg-white text-black text-xs font-bold uppercase tracking-widest rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg"
             >
               {t.nav.bookCall}
             </button>
@@ -188,10 +159,9 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`md:hidden p-2 rounded-full transition-all duration-300 hover:scale-110 ${isOverDark ? "hover:bg-white/10 text-white" : "hover:bg-slate-100 text-slate-700"
-              }`}
+            className={`md:hidden p-2 rounded-xl transition-all duration-300 ${scrolled || isOverDark ? "text-white hover:bg-white/10" : "text-slate-900 hover:bg-slate-100"}`}
           >
-            {isOpen ? <X size={22} /> : <Menu size={22} />}
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 

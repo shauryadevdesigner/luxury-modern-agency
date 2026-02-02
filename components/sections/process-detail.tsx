@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from "react"
 import { useScrollTrigger } from "@/hooks/use-scroll-trigger"
 import Image from "next/image"
+import { useLanguage } from "@/components/language-provider"
 
 function GridParallaxBackground() {
   const [scrollY, setScrollY] = useState(0)
@@ -97,16 +98,14 @@ function PhaseCard({ phase, idx, totalPhases }: { phase: any; idx: number; total
   return (
     <div
       ref={ref}
-      className={`scroll-mt-20 transition-all duration-700 ${
-        isVisible ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-8"
-      }`}
+      className={`scroll-mt-20 transition-all duration-700 ${isVisible ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-8"
+        }`}
     >
       <div className="p-8 md:p-12 rounded-2xl border border-gray-300 bg-white hover:border-blue-900 hover:shadow-2xl hover:bg-gradient-to-br hover:from-white hover:to-blue-900/5 transition-all duration-500">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           <div
-            className={`transition-all duration-700 delay-100 ${
-              isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
-            }`}
+            className={`transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
+              }`}
           >
             <div className="w-14 h-14 rounded-full overflow-hidden mb-4 border-2 border-blue-900/30 hover:border-blue-900 transition-all duration-300">
               <Image
@@ -123,9 +122,8 @@ function PhaseCard({ phase, idx, totalPhases }: { phase: any; idx: number; total
           </div>
 
           <div
-            className={`lg:col-span-2 transition-all duration-700 delay-200 ${
-              isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
-            }`}
+            className={`lg:col-span-2 transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
+              }`}
           >
             <div className="space-y-8">
               <div>
@@ -171,9 +169,8 @@ function BenefitCard({ item, idx }: { item: any; idx: number }) {
   return (
     <div
       ref={ref}
-      className={`p-8 rounded-xl border border-gray-300 bg-white hover:border-blue-900 hover:shadow-lg hover:scale-105 hover:bg-gradient-to-br hover:from-white hover:to-blue-900/5 transition-all duration-500 group ${
-        isVisible ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-8"
-      }`}
+      className={`p-8 rounded-xl border border-gray-300 bg-white hover:border-blue-900 hover:shadow-lg hover:scale-105 hover:bg-gradient-to-br hover:from-white hover:to-blue-900/5 transition-all duration-500 group ${isVisible ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-8"
+        }`}
       style={{ transitionDelay: isVisible ? `${idx * 100}ms` : "0ms" }}
     >
       <h3 className="font-semibold mb-2 text-lg text-black group-hover:text-blue-900 transition-colors">
@@ -185,66 +182,27 @@ function BenefitCard({ item, idx }: { item: any; idx: number }) {
 }
 
 export default function ProcessDetail() {
-  const phases = [
-    {
-      title: "Discovery & Planning",
-      duration: "Days 1-3",
-      image: "/process-discovery.jpg",
-      description: "Deep dive into your vision, market, and technical requirements.",
-      details: [
-        "Stakeholder interviews and requirements gathering",
-        "Market research and competitive analysis",
-        "User flow definition and wireframing",
-        "Technical architecture planning",
-        "Timeline and resource allocation",
-      ],
-      deliverables: ["Requirements document", "Technical architecture", "Project timeline", "Resource plan"],
-    },
-    {
-      title: "Design & Prototyping",
-      duration: "Days 4-8",
-      image: "/process-design.jpg",
-      description: "Iterative design sprints with rapid prototyping and feedback loops.",
-      details: [
-        "High-fidelity design system creation",
-        "Interactive prototypes in Figma",
-        "Design reviews with stakeholders",
-        "Accessibility compliance check",
-        "Design handoff to engineering",
-      ],
-      deliverables: ["Design system", "Interactive prototypes", "Design documentation", "Component library"],
-    },
-    {
-      title: "Development & Build",
-      duration: "Days 9-25",
-      image: "/process-development.jpg",
-      description: "Production-ready code, infrastructure, and deployment pipeline.",
-      details: [
-        "Frontend development with component testing",
-        "Backend API development and optimization",
-        "Database schema design and migration",
-        "Authentication and authorization setup",
-        "Third-party integrations (payments, analytics, etc.)",
-        "Automated testing and quality assurance",
-      ],
-      deliverables: ["Source code", "API documentation", "Test coverage report", "Deployment pipeline"],
-    },
-    {
-      title: "Launch & Deploy",
-      duration: "Days 26-30",
-      image: "/process-launch.jpg",
-      description: "Go live with confidence. Monitoring, alerts, and performance optimization.",
-      details: [
-        "Production environment setup",
-        "Database migration and backup setup",
-        "Monitoring and alerting configuration",
-        "Performance testing and optimization",
-        "Security hardening and compliance",
-        "Launch communication and documentation",
-      ],
-      deliverables: ["Live product", "Monitoring dashboards", "Runbooks", "Documentation"],
-    },
+  const { t } = useLanguage()
+
+  const stepExtraInfo = [
+    { duration: "Days 1-3", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2670&auto=format&fit=crop" },
+    { duration: "Days 4-8", image: "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?q=80&w=2670&auto=format&fit=crop" },
+    { duration: "Days 9-25", image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2670&auto=format&fit=crop" },
+    { duration: "Days 26-30", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop" },
+    { duration: "Ongoing", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop" },
   ]
+
+  const phases = t.process.steps.map((step: any, idx: number) => ({
+    ...step,
+    duration: stepExtraInfo[idx]?.duration || "TBD",
+    image: stepExtraInfo[idx]?.image,
+    details: step.items,
+    deliverables: idx === 0 ? ["Strategy", "Planning"] :
+      idx === 1 ? ["UI/UX Designs", "Prototypes"] :
+        idx === 2 ? ["Clean Code", "Deployment"] :
+          idx === 3 ? ["Live Site", "Reports"] :
+            ["Updates", "Maintenance"]
+  }))
 
   const benefitCards = [
     {

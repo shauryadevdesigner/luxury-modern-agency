@@ -71,13 +71,14 @@ export default function Process() {
                         {step.description}
                       </p>
 
-                      <div className="flex flex-wrap gap-3">
+                      <ul className="space-y-3">
                         {step.items.map((item: string, iidx: number) => (
-                          <span key={iidx} className="px-4 py-1.5 bg-muted/50 rounded-full text-sm font-medium border border-border/50">
-                            {item}
-                          </span>
+                          <li key={iidx} className="flex items-center gap-3 text-muted-foreground group/item">
+                            <div className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover/item:bg-primary transition-colors" />
+                            <span className="text-base">{item}</span>
+                          </li>
                         ))}
-                      </div>
+                      </ul>
                     </div>
                   </div>
 

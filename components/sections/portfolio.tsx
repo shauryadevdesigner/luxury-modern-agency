@@ -127,24 +127,24 @@ export default function Portfolio() {
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-8 md:mb-12">
+        <div className="text-center mb-16 md:mb-20">
           <span
-            className="inline-block px-4 py-1.5 rounded-full text-sm font-medium mb-4 transition-all duration-500"
-            style={{ background: currentGradient.accent, color: currentGradient.from }}
+            className="inline-block px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.3em] mb-4 transition-all duration-500 bg-black/5 dark:bg-white/10"
+            style={{ color: currentGradient.from }}
           >
             {t.portfolio.badge}
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6">
+          <h2 className="text-5xl md:text-7xl font-black text-gray-900 dark:text-white mb-6 tracking-tighter">
             {t.portfolio.title}
           </h2>
-          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto font-medium">
             {t.portfolio.description}
           </p>
         </div>
 
         {/* Category buttons */}
-        <div className="mb-8 md:mb-10">
-          <div className="flex flex-wrap gap-2 md:gap-3 justify-center">
+        <div className="mb-12 md:mb-16">
+          <div className="flex flex-wrap gap-2 md:gap-4 justify-center">
             {CATEGORIES.map((category) => {
               const isActive = activeCategory === category
               const gradient = categoryGradients[category]
@@ -152,13 +152,13 @@ export default function Portfolio() {
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
-                  className={`px-5 md:px-7 py-2.5 md:py-3 rounded-full text-sm md:text-base font-medium transition-all duration-300 ease-out whitespace-nowrap ${isActive
-                    ? "text-white shadow-lg scale-105"
-                    : "text-gray-700 bg-white/80 backdrop-blur-sm border border-gray-200 hover:border-gray-300 hover:bg-white"
+                  className={`px-6 md:px-8 py-3 md:py-3.5 rounded-full text-xs md:text-sm font-black uppercase tracking-widest transition-all duration-500 ease-out whitespace-nowrap ${isActive
+                    ? "text-white shadow-2xl scale-110"
+                    : "text-gray-400 bg-white/50 dark:bg-white/5 backdrop-blur-md border border-gray-100 dark:border-white/5 hover:border-gray-200 dark:hover:border-white/20 hover:text-gray-600 dark:hover:text-gray-200"
                     }`}
                   style={isActive ? {
                     background: `linear-gradient(135deg, ${gradient.from}, ${gradient.to})`,
-                    boxShadow: `0 10px 40px -10px ${gradient.from}80`
+                    boxShadow: `0 15px 45px -12px ${gradient.from}80`
                   } : {}}
                 >
                   {categoryMap[category]}

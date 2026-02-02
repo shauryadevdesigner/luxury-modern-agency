@@ -174,6 +174,7 @@
 }
 
 @layer components {
+
   /* Ultra-premium button styles with advanced hover states */
   .btn-primary {
     @apply px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium transition-all duration-500 ease-out hover:scale-110 hover:shadow-2xl hover:shadow-black/20 active:scale-95;
@@ -202,16 +203,20 @@
   }
 
   @keyframes parallaxFloat {
+
     0%,
     100% {
       transform: translateY(0px) translateX(0px) scale(1);
     }
+
     25% {
       transform: translateY(-20px) translateX(10px) scale(1.02);
     }
+
     50% {
       transform: translateY(-30px) translateX(-5px) scale(1.01);
     }
+
     75% {
       transform: translateY(-15px) translateX(-10px) scale(1.03);
     }
@@ -227,13 +232,16 @@
   }
 
   @keyframes parallaxFloatSlow {
+
     0%,
     100% {
       transform: translateY(0px) translateX(0px) rotate(0deg);
     }
+
     33% {
       transform: translateY(-40px) translateX(20px) rotate(1deg);
     }
+
     66% {
       transform: translateY(-20px) translateX(-15px) rotate(-1deg);
     }
@@ -249,14 +257,17 @@
   }
 
   @keyframes parallaxFloatFast {
+
     0%,
     100% {
       transform: translateY(0px) scale(1);
     }
+
     50% {
       transform: translateY(-25px) scale(1.05);
     }
   }
+
   /* </CHANGE> */
 
   /* Advanced scroll animations with smooth timing */
@@ -296,18 +307,23 @@
   .stagger-1 {
     animation-delay: 0.1s;
   }
+
   .stagger-2 {
     animation-delay: 0.2s;
   }
+
   .stagger-3 {
     animation-delay: 0.3s;
   }
+
   .stagger-4 {
     animation-delay: 0.4s;
   }
+
   .stagger-5 {
     animation-delay: 0.5s;
   }
+
   .stagger-6 {
     animation-delay: 0.6s;
   }
@@ -360,6 +376,7 @@
     from {
       opacity: 0;
     }
+
     to {
       opacity: 1;
     }
@@ -370,6 +387,7 @@
       opacity: 0;
       transform: translateY(40px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -381,6 +399,7 @@
       opacity: 0;
       transform: translateY(40px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -392,6 +411,7 @@
       opacity: 0;
       transform: translateY(-40px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -403,6 +423,7 @@
       opacity: 0;
       transform: translateX(40px);
     }
+
     to {
       opacity: 1;
       transform: translateX(0);
@@ -414,6 +435,7 @@
       opacity: 0;
       transform: translateX(-40px);
     }
+
     to {
       opacity: 1;
       transform: translateX(0);
@@ -425,6 +447,7 @@
       opacity: 0;
       transform: scale(0.9);
     }
+
     to {
       opacity: 1;
       transform: scale(1);
@@ -436,6 +459,7 @@
       opacity: 0;
       transform: scale(0.95);
     }
+
     to {
       opacity: 1;
       transform: scale(1);
@@ -443,45 +467,56 @@
   }
 
   @keyframes float {
+
     0%,
     100% {
       transform: translateY(0px);
     }
+
     50% {
       transform: translateY(-15px);
     }
   }
 
   @keyframes floatSlow {
+
     0%,
     100% {
       transform: translateY(0px);
     }
+
     50% {
       transform: translateY(-20px);
     }
   }
 
   @keyframes blob {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translate(100px, 100px) scale(1) rotate(0deg);
     }
+
     25% {
       transform: translate(100px, 100px) scale(1.05) rotate(3deg);
     }
+
     50% {
       transform: translate(100px, 100px) scale(0.95) rotate(-3deg);
     }
+
     75% {
       transform: translate(100px, 100px) scale(1.02) rotate(2deg);
     }
   }
 
   @keyframes pulse-glow {
+
     0%,
     100% {
       box-shadow: 0 0 20px rgba(101, 84, 192, 0.2);
     }
+
     50% {
       box-shadow: 0 0 40px rgba(101, 84, 192, 0.5);
     }
@@ -491,16 +526,19 @@
     0% {
       background-position: -1000px 0;
     }
+
     100% {
       background-position: 1000px 0;
     }
   }
 
   @keyframes gradient-shift {
+
     0%,
     100% {
       opacity: 0.5;
     }
+
     50% {
       opacity: 1;
     }
@@ -532,6 +570,7 @@
     0% {
       transform: translateX(0);
     }
+
     100% {
       transform: translateX(-50%);
     }
@@ -543,27 +582,36 @@
 
   /* Floating UI mockup animations */
   @keyframes float-slow {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0px) rotate(var(--rotate, 0deg));
     }
+
     50% {
       transform: translateY(-20px) rotate(var(--rotate, 0deg));
     }
   }
 
   @keyframes float-medium {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0px) rotate(var(--rotate, 0deg));
     }
+
     50% {
       transform: translateY(-15px) rotate(var(--rotate, 0deg));
     }
   }
 
   @keyframes float-fast {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0px) rotate(var(--rotate, 0deg));
     }
+
     50% {
       transform: translateY(-10px) rotate(var(--rotate, 0deg));
     }
@@ -579,5 +627,33 @@
 
   .animate-float-fast {
     animation: float-fast 3s ease-in-out infinite;
+  }
+
+  @keyframes infinite-scroll {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes infinite-scroll-reverse {
+    from {
+      transform: translateX(-50%);
+    }
+
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  .animate-infinite-scroll {
+    animation: infinite-scroll 40s linear infinite;
+  }
+
+  .animate-infinite-scroll-reverse {
+    animation: infinite-scroll-reverse 45s linear infinite;
   }
 }

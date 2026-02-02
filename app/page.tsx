@@ -28,12 +28,12 @@ export default function Home() {
       <TechStackCarousel />
       <WhatWeDo />
       <ProofRow />
+      <SpeedPromise />
       <WhyUs />
       <Problems />
       <BeforeAfter />
       <Services />
       <Process />
-      <SpeedPromise />
       <Presentation />
       <CaseStudy />
       <References />

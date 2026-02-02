@@ -1,9 +1,11 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useLanguage } from "@/components/language-provider"
 
 export default function ProcessHero() {
   const [scrollY, setScrollY] = useState(0)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
@@ -83,7 +85,7 @@ export default function ProcessHero() {
 
       {/* Content */}
       <div className="max-w-7xl mx-auto text-center relative z-10">
-        <h1 className="mb-6 text-white">Our Process</h1>
+        <h1 className="mb-6 text-white">{t.process.badge}</h1>
         <p className="text-xl text-white/80 max-w-2xl mx-auto">
           Transparent methodology. Clear communication. Rapid iteration. This is how we ship production-ready products
           in days and weeks, not months.
