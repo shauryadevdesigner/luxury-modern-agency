@@ -54,7 +54,7 @@ function TechBadge({ tech }: { tech: typeof techStack[0] }) {
       <img
         src={tech.icon || "/placeholder.svg"}
         alt={tech.name}
-        className="w-6 h-6 object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
+        className="w-6 h-6 object-contain transition-all duration-500"
       />
       <span className="text-sm font-bold text-muted-foreground group-hover:text-foreground transition-colors duration-300 whitespace-nowrap">
         {tech.name}
