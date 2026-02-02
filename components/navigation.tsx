@@ -117,10 +117,10 @@ export default function Navigation() {
         {/* Navigation Items (Middle) */}
         <div className="hidden md:flex items-center gap-10">
           {[
-            { label: "Solutions", href: "/#realisation" },
-            { label: "Resources", href: "/#proof" },
-            { label: "Pricing", href: "/#pricing" },
-            { label: "Become Affiliate", href: "/#contact" },
+            { label: t.nav.home, href: "/" },
+            { label: t.nav.process, href: "/process" },
+            { label: t.nav.realisation, href: "/#realisation" },
+            { label: t.nav.stack, href: "/stack" },
           ].map((item, index) => {
             return (
               <Link
@@ -138,13 +138,22 @@ export default function Navigation() {
         </div>
 
         {/* Right Actions */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
+          <button
+            onClick={toggleLanguage}
+            className={`text-[12px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full border transition-all duration-300 ${scrolled
+                ? "border-black/10 text-black hover:bg-black/5"
+                : "border-gray-200 text-gray-500 hover:bg-gray-50 dark:border-white/10 dark:text-white dark:hover:bg-white/10"
+              }`}
+          >
+            {language}
+          </button>
           <button
             onClick={openContactForm}
             className={`text-[14px] font-semibold transition-all ${scrolled ? "text-gray-600 hover:text-black" : "text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white"
               }`}
           >
-            Login
+            {t.nav.contact}
           </button>
           <button
             onClick={() => window.open(CALENDLY_URL, "_blank")}
@@ -153,7 +162,7 @@ export default function Navigation() {
                 : "bg-white text-black border-white hover:bg-gray-100"
               }`}
           >
-            Start for free
+            {t.nav.bookCall}
           </button>
         </div>
 
@@ -171,10 +180,10 @@ export default function Navigation() {
         <div className="md:hidden mt-2 mx-6 bg-white dark:bg-black rounded-3xl border border-border shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-300">
           <div className="p-6 flex flex-col gap-4">
             {[
-              { label: "Solutions", href: "/#realisation" },
-              { label: "Resources", href: "/#proof" },
-              { label: "Pricing", href: "/#pricing" },
-              { label: "Become Affiliate", href: "/#contact" },
+              { label: t.nav.home, href: "/" },
+              { label: t.nav.process, href: "/process" },
+              { label: t.nav.realisation, href: "/#realisation" },
+              { label: t.nav.stack, href: "/stack" },
             ].map((item, index) => (
               <Link
                 key={index}
@@ -186,6 +195,11 @@ export default function Navigation() {
               </Link>
             ))}
             <div className="pt-6 border-t border-border flex flex-col gap-4">
+              <div className="flex justify-between items-center mb-4">
+                <button onClick={toggleLanguage} className="flex items-center gap-2 text-sm font-bold">
+                  <Globe size={18} /> {language === "en" ? "French" : "English"}
+                </button>
+              </div>
               <button
                 onClick={() => {
                   setIsOpen(false)
@@ -193,7 +207,7 @@ export default function Navigation() {
                 }}
                 className="w-full py-4 text-center font-bold text-gray-600 dark:text-gray-400"
               >
-                Login
+                {t.nav.contact}
               </button>
               <button
                 onClick={() => {
@@ -202,7 +216,7 @@ export default function Navigation() {
                 }}
                 className="w-full py-4 bg-primary text-white rounded-2xl font-bold"
               >
-                Start for free
+                {t.nav.bookCall}
               </button>
             </div>
           </div>
