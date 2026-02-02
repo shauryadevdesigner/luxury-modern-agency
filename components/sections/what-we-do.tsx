@@ -79,17 +79,15 @@ export default function WhatWeDo() {
       </div>
 
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        {/* Header - Centered as per image */}
-        <div className="text-center mb-20 md:mb-24">
-          <span className="inline-block px-4 py-1.5 bg-muted rounded-full text-xs font-bold text-muted-foreground mb-6 uppercase tracking-[0.2em]">
-            {t.features.badge}
-          </span>
-          <h2 className={`text-4xl md:text-7xl font-black tracking-tight transition-all duration-1000 leading-tight mb-6 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            {t.features.title}
+        {/* Header - Banner Style */}
+        <div className="mb-20 md:mb-24 bg-[#050505] rounded-[2rem] p-10 md:p-16 text-center border border-white/5 relative overflow-hidden group">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          <h2 className={`text-4xl md:text-6xl font-black tracking-tight transition-all duration-1000 leading-tight ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+            <span className="text-white">Digital Product Design & </span>
+            <br className="hidden md:block" />
+            <span className="text-white">Development </span>
+            <span className="text-primary italic font-medium ml-2">Services We Offer</span>
           </h2>
-          <p className={`text-xl text-muted-foreground max-w-2xl mx-auto transition-all duration-1000 delay-200 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-            {t.features.subtitle}
-          </p>
         </div>
 
         {/* Bento Grid */}

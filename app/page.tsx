@@ -26,14 +26,14 @@ export default function Home() {
       <Navigation />
       <Hero />
       <TechStackCarousel />
-      <WhatWeDo />
-      <ProofRow />
-      <SpeedPromise />
-      <WhyUs />
       <Problems />
+      <WhyUs />
+      <ProofRow />
+      <WhatWeDo />
+      <Process />
+      <SpeedPromise />
       <BeforeAfter />
       <Services />
-      <Process />
       <Presentation />
       <CaseStudy />
       <References />
