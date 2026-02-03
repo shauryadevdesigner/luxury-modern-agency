@@ -1,5 +1,6 @@
 import Navigation from "@/components/navigation"
 import Hero from "@/components/sections/hero"
+import FlagshipPackage from "@/components/sections/flagship-package"
 import WhatWeDo from "@/components/sections/what-we-do"
 import TechStackCarousel from "@/components/sections/tech-stack-carousel"
 import Problems from "@/components/sections/problems"
@@ -14,6 +15,7 @@ import CaseStudy from "@/components/sections/mobile-dev-case-study"
 import References from "@/components/sections/references"
 import Portfolio from "@/components/sections/portfolio"
 import AppCarousel from "@/components/sections/app-carousel"
+import Founders from "@/components/sections/founders"
 import ConsultationBooking from "@/components/sections/consultation-booking"
 import Support from "@/components/sections/support"
 import FinalCTA from "@/components/sections/final-cta"
@@ -25,6 +27,7 @@ export default function Home() {
     <main className="min-h-screen bg-background overflow-x-hidden">
       <Navigation />
       <Hero />
+      <FlagshipPackage />
       <TechStackCarousel />
       <Problems />
       <WhyUs />
@@ -39,6 +42,7 @@ export default function Home() {
       <References />
       <Portfolio />
       <AppCarousel />
+      <Founders />
       <ConsultationBooking />
       <Support />
       <FinalCTA />

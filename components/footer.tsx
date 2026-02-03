@@ -12,9 +12,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
           <div className="space-y-6">
-            <h3 className="text-3xl font-black tracking-tighter">Qlyra</h3>
+            <h3 className="text-3xl font-black tracking-tighter">Obsidor</h3>
             <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
-              Premium development agency. Fast builds, full ownership, long-term partnership focused on your success.
+              Premium digital agency specializing in editing, marketing, and development. We deliver professional solutions that drive results.
             </p>
           </div>
 
@@ -22,13 +22,13 @@ export default function Footer() {
             <h4 className="text-xs font-black uppercase tracking-[0.2em] mb-8 text-gray-400">Services</h4>
             <ul className="space-y-4 text-sm text-gray-500">
               <li>
-                <Link href="/services#saas" className="hover:text-primary transition-colors">SaaS Development</Link>
+                <Link href="/services#editing" className="hover:text-primary transition-colors">Editing</Link>
               </li>
               <li>
-                <Link href="/services#mobile" className="hover:text-primary transition-colors">Mobile Apps</Link>
+                <Link href="/services#marketing" className="hover:text-primary transition-colors">Marketing</Link>
               </li>
               <li>
-                <Link href="/services#web" className="hover:text-primary transition-colors">Web Platforms</Link>
+                <Link href="/services#development" className="hover:text-primary transition-colors">Development</Link>
               </li>
               <li>
                 <Link href="/services#design" className="hover:text-primary transition-colors">UI/UX Design</Link>

@@ -9,18 +9,18 @@ export const translations = {
             bookCall: "Book a Call",
         },
         hero: {
-            badge: "Innovation First",
-            headline: "We design, build and scale",
-            fast: "— fast.",
-            words: ["SaaS & apps", "web platforms", "mobile apps", "dashboards"],
-            subtitle: "From idea to production-ready product in days, not months. We bring full ownership, senior expertise, and relentless focus on speed.",
+            badge: "Premium Digital Agency",
+            headline: "We specialize in Editing, Marketing and",
+            fast: "— Development.",
+            words: ["video editing", "social media", "web apps", "brand growth"],
+            subtitle: "Professional editing, strategic marketing, and cutting-edge development. We deliver premium digital solutions that elevate your brand and drive results.",
             getStarted: "Get Started",
-            watchDemo: "Watch The Demo",
+            watchDemo: "Book a Call",
         },
         whyUs: {
             badge: "WHY US ?",
-            title: "Why Qlyra is different ?",
-            subtitle: "The next-gen solution to launch your SaaS or app in record time.",
+            title: "Why Obsidor is different ?",
+            subtitle: "Your premium digital agency for editing, marketing, and development.",
             comparison: {
                 traditional: {
                     title: "Traditional Agencies",
@@ -31,8 +31,8 @@ export const translations = {
                         "Build and vanish"
                     ]
                 },
-                qlyra: {
-                    title: "Qlyra",
+                obsidor: {
+                    title: "Obsidor",
                     items: [
                         "Full ownership: code, infrastructure, IP",
                         "Senior team only, world-class engineers & designers",

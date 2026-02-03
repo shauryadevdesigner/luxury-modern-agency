@@ -9,13 +9,13 @@ const geist = Geist({ subsets: ["latin"] })
 const geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Qlyra | SaaS & App Development Agency",
+  title: "Obsidor | Premium Digital Agency - Editing, Marketing & Development",
   description:
-    "From idea to production-ready product in days, not months. We design, build, and scale SaaS & apps with full ownership and senior expertise.",
+    "Your premium digital agency for editing, marketing, and development. We deliver professional video editing, social media marketing, and web development solutions.",
   generator: "v0.app",
   icons: {
-    icon: "/favicon.jpg",
-    apple: "/favicon.jpg",
+    icon: "/favicon.png",
+    apple: "/favicon.png",
   },
   viewport: {
     width: "device-width",

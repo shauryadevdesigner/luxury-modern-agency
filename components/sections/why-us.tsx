@@ -47,15 +47,20 @@ export default function WhyUs() {
             </h2>
             <div className={`transition-all duration-1000 ease-out delay-100 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"}`}>
               <Image
-                src="/logo.jpg"
-                alt="Qlyra Logo"
+                src="/obsidor-logo.png"
+                alt="Obsidor Logo"
                 width={180}
                 height={60}
                 className={`h-12 md:h-16 w-auto object-contain ${theme === 'dark' ? 'invert brightness-200' : ''}`}
               />
             </div>
             <h2 className={`text-4xl md:text-5xl lg:text-7xl font-bold text-foreground transition-all duration-1000 ease-out delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
-              is different?
+              <span className="relative inline-block">
+                is different?
+                <svg className="absolute -bottom-2 left-0 w-full h-[0.5em] text-primary" viewBox="0 0 100 10" preserveAspectRatio="none">
+                  <path d="M2 5 Q 50 12 98 5" stroke="currentColor" strokeWidth="4" strokeLinecap="round" fill="none" />
+                </svg>
+              </span>
             </h2>
           </div>
           <p className={`text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto transition-all duration-1000 ease-out delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
@@ -88,7 +93,7 @@ export default function WhyUs() {
             </ul>
           </div>
 
-          {/* Qlyra */}
+          {/* Obsidor */}
           <div className="bg-primary/5 border-2 border-primary/20 rounded-[3rem] p-10 md:p-12 relative overflow-hidden group shadow-2xl shadow-primary/5">
             <div className="absolute top-0 right-0 p-8 text-primary/10 group-hover:scale-110 transition-transform duration-700">
               <Check size={120} strokeWidth={3} />
@@ -98,11 +103,11 @@ export default function WhyUs() {
                 <Check size={24} strokeWidth={3} />
               </div>
               <h3 className="text-2xl md:text-3xl font-bold text-foreground">
-                {t.whyUs.comparison.qlyra.title}
+                {t.whyUs.comparison.obsidor.title}
               </h3>
             </div>
             <ul className="space-y-6">
-              {t.whyUs.comparison.qlyra.items.map((item: string, i: number) => (
+              {t.whyUs.comparison.obsidor.items.map((item: string, i: number) => (
                 <li key={i} className="flex gap-4 items-start text-lg text-foreground font-medium">
                   <div className="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center">
                     <Check size={14} strokeWidth={3} />
@@ -158,6 +163,13 @@ export default function WhyUs() {
 
       {/* Background purely decorative elements */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-primary/2 rounded-full blur-[150px] pointer-events-none -z-0" />
+
+      {/* Scroll-based Background Decoration (Big Vector) */}
+      <div className="absolute top-[-10%] right-[-10%] w-[60%] h-auto pointer-events-none opacity-[0.45] overflow-hidden -z-10 rotate-12">
+        <svg viewBox="0 0 687 622" fill="none" className="w-full h-auto text-muted-foreground" xmlns="http://www.w3.org/2000/svg">
+          <path d="M125.136 130.841C273.234 23.0822 591.391 -112.114 715.876 -122.738C871.483 -136.018 34.561 359.185 76.5296 439.562C118.498 519.94 692.632 35.2218 799.814 35.2218C906.995 35.2218 231.871 444.088 294.501 531.455C357.131 618.822 692.936 332.522 833.074 280.623C836.34 334.765 817.475 460.729 715.876 531.455" stroke="currentColor" strokeWidth="148" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </div>
     </section>
   )
 }

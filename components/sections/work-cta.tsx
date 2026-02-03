@@ -5,7 +5,7 @@ import { useContactForm } from "@/app/providers"
 
 export default function WorkCTA() {
   const { openContactForm } = useContactForm()
-  const CALENDLY_URL = "https://calendly.com/sosikomegrelidze95/new-meeting"
+  const CALENDLY_URL = "https://cal.com/shaurya-nischal-pandey-lx05yx/deal-talk"
 
   return (
     <section className="py-16 md:py-20 px-4 md:px-8 bg-secondary border-y border-border">

@@ -46,24 +46,24 @@ export default function Problems() {
           </h2>
         </div>
 
-        {/* Problem Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-20">
+        {/* Problem Cards - Reduced Size */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           {t.problems.items.map((problem: any, index: number) => {
             const Icon = icons[index]
             return (
               <div
                 key={index}
-                className={`group p-10 bg-card border border-border rounded-[2.5rem] transition-all duration-700 ease-out hover-lift shadow-sm hover:shadow-2xl hover:shadow-primary/5 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
+                className={`group p-6 bg-card border border-border rounded-2xl transition-all duration-700 ease-out hover-lift shadow-sm hover:shadow-2xl hover:shadow-primary/5 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
                   }`}
                 style={{ transitionDelay: `${index * 0.15}s` }}
               >
-                <div className="w-16 h-16 bg-muted rounded-[1.25rem] flex items-center justify-center mb-10 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
-                  <Icon className="w-8 h-8 text-foreground" />
+                <div className="w-12 h-12 bg-muted rounded-xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                  <Icon className="w-6 h-6 text-foreground" />
                 </div>
-                <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-5 leading-tight group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-xl font-bold text-foreground mb-3 leading-tight group-hover:text-primary transition-colors duration-300">
                   {problem.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed text-lg lg:text-xl font-medium opacity-80">
+                <p className="text-muted-foreground leading-relaxed text-sm font-medium opacity-80">
                   {problem.description}
                 </p>
               </div>
@@ -92,6 +92,13 @@ export default function Problems() {
       {/* Decorative elements - Subtle gradients */}
       <div className="absolute top-1/4 -left-64 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none -z-0" />
       <div className="absolute bottom-1/4 -right-64 w-[500px] h-[500px] bg-accent-purple/5 rounded-full blur-[120px] pointer-events-none -z-0" />
+
+      {/* "Half-Collided" Wall Decoration (Big Vector) */}
+      <div className="absolute top-[20%] right-[-15%] w-[60%] h-auto pointer-events-none opacity-[0.45] overflow-hidden -z-10 -rotate-45">
+        <svg viewBox="0 0 687 622" fill="none" className="w-full h-auto text-muted-foreground" xmlns="http://www.w3.org/2000/svg">
+          <path d="M125.136 130.841C273.234 23.0822 591.391 -112.114 715.876 -122.738C871.483 -136.018 34.561 359.185 76.5296 439.562C118.498 519.94 692.632 35.2218 799.814 35.2218C906.995 35.2218 231.871 444.088 294.501 531.455C357.131 618.822 692.936 332.522 833.074 280.623C836.34 334.765 817.475 460.729 715.876 531.455" stroke="currentColor" strokeWidth="148" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </div>
     </section>
   )
 }

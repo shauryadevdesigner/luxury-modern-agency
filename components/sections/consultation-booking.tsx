@@ -3,7 +3,7 @@
 import { Calendar, Clock, Users } from "lucide-react"
 
 export default function ConsultationBooking() {
-  const CALENDLY_URL = "https://calendly.com/sosikomegrelidze95/new-meeting"
+  const CALENDLY_URL = "https://cal.com/shaurya-nischal-pandey-lx05yx/deal-talk"
 
   const features = [
     {
@@ -24,7 +24,7 @@ export default function ConsultationBooking() {
   ]
 
   return (
-    <section className="py-16 md:py-20 px-4 md:px-8 bg-background text-foreground border-t border-border">
+    <section className="py-16 md:py-20 px-4 md:px-8 bg-background text-foreground border-t border-border relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10 slide-up">
@@ -92,6 +92,12 @@ export default function ConsultationBooking() {
             </div>
           </div>
         </div>
+      </div>
+      {/* Background Decoration (Big Vector) */}
+      <div className="absolute top-[10%] left-[-10%] w-[50%] h-auto pointer-events-none opacity-[0.45] overflow-hidden -z-0 rotate-180">
+        <svg viewBox="0 0 687 622" fill="none" className="w-full h-auto text-muted-foreground" xmlns="http://www.w3.org/2000/svg">
+          <path d="M125.136 130.841C273.234 23.0822 591.391 -112.114 715.876 -122.738C871.483 -136.018 34.561 359.185 76.5296 439.562C118.498 519.94 692.632 35.2218 799.814 35.2218C906.995 35.2218 231.871 444.088 294.501 531.455C357.131 618.822 692.936 332.522 833.074 280.623C836.34 334.765 817.475 460.729 715.876 531.455" stroke="currentColor" strokeWidth="148" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
       </div>
     </section>
   )

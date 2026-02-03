@@ -661,4 +661,66 @@
   .animate-infinite-scroll-reverse {
     animation: infinite-scroll-reverse 45s linear infinite;
   }
+
+  /* --- PREMIUM ANIMATIONS (GPU Accelerated) --- */
+
+  /* Skyfall: Descend from heaven */
+  @keyframes skyfall {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px) scale(0.92) translateZ(0);
+      filter: blur(12px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1) translateZ(0);
+      filter: blur(0);
+    }
+  }
+
+  .text-descend {
+    animation: skyfall 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transform-style: preserve-3d;
+    will-change: transform, opacity, filter;
+  }
+
+  .text-descend-delay-1 {
+    animation: skyfall 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+    opacity: 0;
+  }
+
+  .text-descend-delay-2 {
+    animation: skyfall 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    opacity: 0;
+  }
+
+  .text-descend-delay-3 {
+    animation: skyfall 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    opacity: 0;
+  }
+
+  .text-descend-delay-4 {
+    animation: skyfall 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+    opacity: 0;
+  }
+
+  /* Premium Breathe */
+  @keyframes breathe-premium {
+
+    0%,
+    100% {
+      transform: scale(1) translateY(0);
+      filter: brightness(1);
+    }
+
+    50% {
+      transform: scale(1.03) translateY(-5px);
+      filter: brightness(1.1);
+    }
+  }
+
+  .animate-breathe {
+    animation: breathe-premium 10s ease-in-out infinite;
+  }
 }

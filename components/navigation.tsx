@@ -22,7 +22,7 @@ export default function Navigation() {
   const { theme, setTheme } = useTheme()
   const { language, setLanguage, t } = useLanguage()
 
-  const CALENDLY_URL = "https://calendly.com/sosikomegrelidze95/new-meeting"
+  const CALENDLY_URL = "https://cal.com/shaurya-nischal-pandey-lx05yx/deal-talk"
 
   useEffect(() => {
     setMounted(true)
@@ -77,9 +77,9 @@ export default function Navigation() {
 
   const navItems = [
     { label: t.nav.home, href: "/" },
-    { label: t.nav.process, href: "/process" },
-    { label: t.nav.realisation, href: "/realisation" },
-    { label: t.nav.stack, href: "/stack" },
+    // { label: t.nav.process, href: "/process" },
+    // { label: t.nav.realisation, href: "/realisation" },
+    // { label: t.nav.stack, href: "/stack" },
   ]
 
   const toggleLanguage = () => {
@@ -106,12 +106,15 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group transition-all duration-300">
-          <div className="w-9 h-9 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 group-hover:rotate-6 transition-transform">
-            <span className="text-white font-black text-lg">Q</span>
+          <div className="relative h-10 w-32 transition-transform group-hover:scale-105">
+            <Image
+              src="/obsidor-logo.png"
+              alt="Obsidor Logo"
+              fill
+              className={`object-contain ${scrolled ? "brightness-0" : "brightness-0 dark:brightness-0 invert dark:invert"}`}
+              priority
+            />
           </div>
-          <span className={`text-xl font-black tracking-tighter ${scrolled ? "text-foreground" : "text-foreground dark:text-white"}`}>
-            Qlyra
-          </span>
         </Link>
 
         {/* Navigation Items (Middle) */}
@@ -127,8 +130,8 @@ export default function Navigation() {
                 key={index}
                 href={item.href}
                 className={`text-[14px] font-semibold transition-all duration-300 ${scrolled
-                    ? "text-gray-600 hover:text-black"
-                    : "text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white"
+                  ? "text-gray-600 hover:text-black"
+                  : "text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white"
                   }`}
               >
                 {item.label}
@@ -142,8 +145,8 @@ export default function Navigation() {
           <button
             onClick={toggleLanguage}
             className={`text-[12px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full border transition-all duration-300 ${scrolled
-                ? "border-black/10 text-black hover:bg-black/5"
-                : "border-gray-200 text-gray-500 hover:bg-gray-50 dark:border-white/10 dark:text-white dark:hover:bg-white/10"
+              ? "border-black/10 text-black hover:bg-black/5"
+              : "border-gray-200 text-gray-500 hover:bg-gray-50 dark:border-white/10 dark:text-white dark:hover:bg-white/10"
               }`}
           >
             {language}
@@ -158,8 +161,8 @@ export default function Navigation() {
           <button
             onClick={() => window.open(CALENDLY_URL, "_blank")}
             className={`px-8 py-3 text-[14px] font-bold rounded-full border transition-all duration-300 ${scrolled
-                ? "bg-black text-white border-black hover:bg-gray-800"
-                : "bg-white text-black border-white hover:bg-gray-100"
+              ? "bg-black text-white border-black hover:bg-gray-800"
+              : "bg-white text-black border-white hover:bg-gray-100"
               }`}
           >
             {t.nav.bookCall}
