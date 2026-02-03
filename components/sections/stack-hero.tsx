@@ -1,91 +1,50 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useLanguage } from "@/components/language-provider"
 
 export default function StackHero() {
-  const [scrollY, setScrollY] = useState(0)
+  const [isLoaded, setIsLoaded] = useState(false)
+  const { t } = useLanguage()
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY)
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
+    setIsLoaded(true)
   }, [])
 
   return (
-    <section data-dark-section="true" className="relative pt-40 pb-24 px-4 md:px-8 overflow-hidden">
-      {/* Navy gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#1F3C88] via-[#1E40AF] to-[#1F3C88]" />
-
-      {/* Parallax floating shapes - Tech/Grid theme */}
-      {/* Grid squares */}
-      <div
-        className="absolute w-24 h-24 border border-white/20"
-        style={{ top: "10%", left: "10%", transform: `translateY(${scrollY * 0.3}px)` }}
-      />
-      <div
-        className="absolute w-16 h-16 border border-white/15"
-        style={{ top: "15%", left: "12%", transform: `translateY(${scrollY * 0.35}px)` }}
-      />
-      <div
-        className="absolute w-20 h-20 bg-white/5"
-        style={{ top: "60%", right: "8%", transform: `translateY(${scrollY * -0.25}px)` }}
-      />
-
-      {/* Code brackets */}
-      <div
-        className="absolute text-white/20 text-5xl font-mono"
-        style={{ top: "20%", right: "15%", transform: `translateY(${scrollY * 0.4}px)` }}
-      >
-        {"</>"}
-      </div>
-      <div
-        className="absolute text-white/15 text-3xl font-mono"
-        style={{ top: "70%", left: "25%", transform: `translateY(${scrollY * -0.3}px)` }}
-      >
-        {"{ }"}
+    <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-background">
+      {/* Right Side Fluid Background - Mimicking Home Hero */}
+      <div className="hidden lg:block absolute top-0 right-0 w-[60%] h-full overflow-hidden z-0">
+        <svg
+          className="absolute top-0 -left-1 w-[200%] h-full lg:w-full text-[#1C1C1C]"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+        >
+          <path d="M 15 0 C 40 40 0 60 25 100 L 100 100 L 100 0 Z" fill="currentColor" />
+        </svg>
       </div>
 
-      {/* Circles */}
-      <div
-        className="absolute w-32 h-32 rounded-full border-2 border-white/10"
-        style={{ top: "35%", left: "5%", transform: `translateY(${scrollY * -0.2}px)` }}
-      />
-      <div
-        className="absolute w-10 h-10 rounded-full bg-white/15"
-        style={{ top: "50%", right: "20%", transform: `translateY(${scrollY * 0.35}px)` }}
-      />
+      {/* Mobile Background */}
+      <div className="lg:hidden absolute inset-0 bg-background z-0">
+        <div className="absolute top-0 right-0 w-3/4 h-3/4 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+      </div>
 
-      {/* Triangles */}
-      <div
-        className="absolute w-0 h-0 border-l-[25px] border-l-transparent border-r-[25px] border-r-transparent border-b-[40px] border-b-white/15"
-        style={{ top: "25%", left: "30%", transform: `translateY(${scrollY * 0.45}px)` }}
-      />
-      <div
-        className="absolute w-0 h-0 border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent border-t-[25px] border-t-white/10"
-        style={{ top: "75%", right: "35%", transform: `translateY(${scrollY * -0.4}px)` }}
-      />
-
-      {/* Dots */}
-      <div
-        className="absolute w-3 h-3 rounded-full bg-white/25"
-        style={{ top: "45%", left: "45%", transform: `translateY(${scrollY * 0.5}px)` }}
-      />
-      <div
-        className="absolute w-2 h-2 rounded-full bg-white/30"
-        style={{ top: "30%", right: "40%", transform: `translateY(${scrollY * -0.35}px)` }}
-      />
-      <div
-        className="absolute w-4 h-4 rounded-full bg-white/20"
-        style={{ top: "80%", left: "55%", transform: `translateY(${scrollY * 0.3}px)` }}
-      />
-
-      {/* Content */}
-      <div className="max-w-7xl mx-auto text-center relative z-10">
-        <h1 className="mb-6 text-white">Our Stack & Expertise</h1>
-        <p className="text-xl text-white/80 max-w-2xl mx-auto">
-          Modern, battle-tested technologies. We choose tools that scale, perform, and allow us to ship fast without
-          cutting corners.
-        </p>
+      <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center h-full pt-20">
+        <div className={`space-y-6 max-w-2xl transition-all duration-1000 ${isLoaded ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"}`}>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span className="text-xs font-black tracking-widest text-primary uppercase">{t.stack.badge}</span>
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground leading-[1.1]">
+            {t.stack.title} <br />
+            <span className="text-primary font-serif italic relative inline-block">
+              {t.stack.highlight}
+            </span>
+          </h1>
+          <p className="text-xl text-muted-foreground leading-relaxed max-w-lg">
+            {t.stack.description}
+          </p>
+        </div>
       </div>
     </section>
   )

@@ -10,7 +10,7 @@ export default function Hero() {
   const { openContactForm } = useContactForm()
   const { t } = useLanguage()
 
-  // Typewriter state
+  // typewriting animation
   const [displayedText, setDisplayedText] = useState("")
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)

@@ -214,7 +214,7 @@ export const translations = {
         },
         whyUs: {
             badge: "POURQUOI NOUS ?",
-            title: "Pourquoi Qlyra est différent ?",
+            title: "Pourquoi Obsidor est différent ?",
             subtitle: "La solution nouvelle génération pour lancer votre SaaS ou application en un temps record.",
             comparison: {
                 traditional: {
@@ -226,8 +226,8 @@ export const translations = {
                         "Construisent et disparaissent"
                     ]
                 },
-                qlyra: {
-                    title: "Qlyra",
+                obsidor: {
+                    title: "Obsidor",
                     items: [
                         "Pleine propriété : code, infrastructure, PI",
                         "Équipe senior uniquement, ingénieurs et designers de classe mondiale",

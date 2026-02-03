@@ -106,7 +106,7 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group transition-all duration-300">
-          <div className="relative h-10 w-32 transition-transform group-hover:scale-105">
+          <div className="relative h-28 w-80 transition-transform group-hover:scale-105">
             <Image
               src="/obsidor-logo.png"
               alt="Obsidor Logo"
@@ -122,7 +122,7 @@ export default function Navigation() {
           {[
             { label: t.nav.home, href: "/" },
             { label: t.nav.process, href: "/process" },
-            { label: t.nav.realisation, href: "/#realisation" },
+
             { label: t.nav.stack, href: "/stack" },
           ].map((item, index) => {
             return (
@@ -185,7 +185,7 @@ export default function Navigation() {
             {[
               { label: t.nav.home, href: "/" },
               { label: t.nav.process, href: "/process" },
-              { label: t.nav.realisation, href: "/#realisation" },
+
               { label: t.nav.stack, href: "/stack" },
             ].map((item, index) => (
               <Link

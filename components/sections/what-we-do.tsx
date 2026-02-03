@@ -54,7 +54,7 @@ export default function WhatWeDo() {
         icon: <Cpu size={24} />,
         image: "/side-left.png",
         className: "md:col-span-1 md:row-span-1",
-        variant: "default"
+        variant: "light"
       },
       {
         key: 'design',
